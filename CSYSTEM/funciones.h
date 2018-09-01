@@ -4,16 +4,14 @@
 using namespace std;
 
 void iNtro(){
-
     cout<<"Hola"<<endl;
-
 }
 
 void sAlida(){
-
     cout<<"Chau"<<endl;
-
 }
+
+
 
 
 
