@@ -3,7 +3,7 @@
 #include <cstdio>
 using namespace std;
 
-//lee Archivo
+//verifica si existe el Archivo
 bool existeArchivo(const char *URL){
 
     bool existe = false;
