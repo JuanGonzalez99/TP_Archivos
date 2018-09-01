@@ -57,7 +57,7 @@
 //=============================================================================
 //Constantes para las direcciones de los archivos
 const char PRECIOS [] = "./precios.dat";
-const char EMPLEADOS [] = "./empleados.dat"
+const char EMPLEADOS [] = "./empleados.dat";
 
 
 //Constantes para los tipos de empleados
