@@ -3,27 +3,25 @@
 #include <cstdio>
 using namespace std;
 
-const
-
 //lee Archivo
-bool lArchivo(){
+bool existeArchivo(const char *URL){
 
-    bool estado = false;
+    bool existe = false;
     FILE *archivo;
-    archivo = fopen(ARCHIVO,"rb");
+    archivo = fopen(URL,"rb");
     if(archivo!=NULL){
         fclose(archivo);
-        estado = true;
+        existe = true;
     }
-    return estado;
+    return existe;
 }
 
 //crea Archivo
-bool cArchivo(){
+bool creaArchivo(const char *URL){
 
     bool estado = false;
     FILE *archivo;
-    archivo = fopen(ARCHIVO,"wb");
+    archivo = fopen(URL,"wb");
     if(archivo!=NULL){
         fclose(archivo);
         estado = true;
@@ -35,16 +33,44 @@ bool cArchivo(){
 }
 
 //Resguardo de datos de los usuarios.
-bool sStruct(Empleado *datos){
+template <typename T>
+bool escribirArchivo(T *datos, const char *URL){
 
-    bool estado = false;
+    bool error = true;
     FILE *archivo;
-    archivo = fopen(ARCHIVO,"rb");
+    archivo = fopen(URL,"rb");
+    if(archivo!=NULL){
+
+        fwrite(datos,sizeof(T),1,archivo);
+        fclose(archivo);
+        error = false;
+
+    }
+    return error;
 
 
 
 }
 
+//Lectura de datos de los usuarios.
+template <typename T>
+bool leerArchivo(T *datos, const char *URL){
+
+    bool error = true;
+    FILE *archivo;
+    archivo = fopen(URL,"rb");
+    if(archivo!=NULL){
+
+        f(datos,sizeof(T),1,archivo);
+        fclose(archivo);
+        error = false;
+
+    }
+    return error;
+
+
+
+}
 
 
 
