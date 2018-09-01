@@ -77,6 +77,11 @@ using namespace std;
 int main()
 {
 
+    //Menu cosmico
+    bool salir = false;
+    char op[2];
+
+
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
     //--------------------------------------------------------------------------
