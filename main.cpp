@@ -55,6 +55,21 @@
 //*****************************************************************************
 //                             DECLARACIONES GLOBALES
 //=============================================================================
+const char ARCHIVO [] = "./data.dat"; // muy generico
+const int DISENADOR = 0, DESARROLLADOR = 1, ANALISTA = 2;
+
+
+//estructura generica para los empleados
+struct Empleado{
+
+    int dni;
+    char nombre[30];
+    char apellido[30];
+    int horas;
+    int tipo;
+
+};
+
 
 
 
@@ -62,7 +77,6 @@
 //                             INCLUSIONES PERSONALES
 //=============================================================================
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
-#include "CSYSTEM/funciones.h" // Libreria de funciones.
 #include "menu.h" // Libreria de menu.
 
 
@@ -72,13 +86,30 @@
 using namespace std;
 
 
+
+
 //==============================================================================
 // FUNCION PRINCIPAL - PUNTO DE INICIO DEL PROYECTO
 //------------------------------------------------------------------------------
 int main()
 {
 
-iNtro();
+if(lArchivo() != false){
+
+    cout<<"existe archivo";
+
+}
+else{
+
+    cout<<"no existe archivo"<<endl;
+    cout<<"Es momento de crearlo"<<endl;
+
+    cArchivo();
+
+
+
+}
+
 
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
