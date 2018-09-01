@@ -1,6 +1,6 @@
 //#############################################################################
 // ARCHIVO             : main.cpp
-// AUTOR/ES            : Juan Gonzalez Javier Pereyra
+// AUTOR/ES            : Juan Gonzalez, Javier Pereyra.
 // VERSION             : 0.01 beta.
 // FECHA DE CREACION   : 30/08/2018.
 // ULTIMA ACTUALIZACION: 01/09/2018.
@@ -26,9 +26,9 @@
 // 59 Temple Place - Suite 330, Boston, MA 02111-1307, EE.UU.
 
 //=============================================================================
-// SISTEMA OPERATIVO   : Windows 10.
-// IDE                 : Code::Blocks - 17.12
-// COMPILADOR          : MinGW (Windows).
+// SISTEMA OPERATIVO   : Windows 10, Ubuntu 16.04.
+// IDE                 : Code::Blocks - 17.12 / 16.01.
+// COMPILADOR          : MinGW (Windows), g++ (Linux).
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
@@ -46,44 +46,45 @@
 //*****************************************************************************
 //                             INCLUSIONES ESTANDAR
 //=============================================================================
-#include <iostream> // Libreria de flujos de  Entrada/Salida  que contiene  los
+//#include <iostream> // Libreria de flujos de  Entrada/Salida  que contiene  los
                     // objetos cin, cout y endl.
 
-#include <cstdlib>  // Libreria estandar que contiene la funcion exit().
+//#include <cstdlib>  // Libreria estandar que contiene la funcion exit().
 
 
 //*****************************************************************************
 //                             DECLARACIONES GLOBALES
 //=============================================================================
-const char ARCHIVO [] = "./data.dat"; // muy generico
+//Constantes para las direcciones de los archivos
+const char ARCHIVO [] = "./data.dat";
+
+
+//Constantes para los tipos de empleados
 const int DISENADOR = 0, DESARROLLADOR = 1, ANALISTA = 2;
 
 
-//estructura generica para los empleados
-struct Empleado{
-
-    int dni;
+//Estructura generica para los empleados
+struct Empleado
+{
+    int DNI;
     char nombre[30];
     char apellido[30];
     int horas;
     int tipo;
-
 };
 
-
+void pedirEnter(const char*);
 
 
 //*****************************************************************************
 //                             INCLUSIONES PERSONALES
 //=============================================================================
-#include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
 #include "menu.h" // Libreria de menu.
 
 
 //==============================================================================
 // DECLARACION DEL ESPACIO DE NOMBRES POR DEFECTO
 //------------------------------------------------------------------------------
-using namespace std;
 
 
 
@@ -93,24 +94,9 @@ using namespace std;
 //------------------------------------------------------------------------------
 int main()
 {
-
-if(lArchivo() != false){
-
-    cout<<"existe archivo";
-
-}
-else{
-
-    cout<<"no existe archivo"<<endl;
-    cout<<"Es momento de crearlo"<<endl;
-
-    cArchivo();
-
-
-
-}
-
-
+    intro();
+    menu();
+    salida();
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
     //--------------------------------------------------------------------------
