@@ -34,7 +34,16 @@ bool cArchivo(){
 
 }
 
-//Resguardo de estructura
+//Resguardo de datos de los usuarios.
+bool sStruct(Empleado *datos){
+
+    bool estado = false;
+    FILE *archivo;
+    archivo = fopen(ARCHIVO,"rb");
+
+
+
+}
 
 
 
