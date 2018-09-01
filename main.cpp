@@ -63,6 +63,7 @@
 //=============================================================================
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
 #include "CSYSTEM/funciones.h" // Libreria de funciones.
+#include "menu.h" // Libreria de menu.
 
 
 //==============================================================================
@@ -77,10 +78,7 @@ using namespace std;
 int main()
 {
 
-    //Menu cosmico
-    bool salir = false;
-    char op[2];
-
+iNtro();
 
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
