@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1535810055 source:/home/jpereyra/Documents/UTN/labo2/TP_Archivos/main.cpp
+	<iostream>
+	<cstdlib>
+	"CSYSTEM/csystem.h"
+	"CSYSTEM/funciones.h"
+
+1535809854 /home/jpereyra/Documents/UTN/labo2/TP_Archivos/CSYSTEM/csystem.h
+	<iostream>
+	<cstdlib>
+	<cstdio>
+	<ctime>
+	<windows.h>
+	<unistd.h>
+
+1535810333 /home/jpereyra/Documents/UTN/labo2/TP_Archivos/CSYSTEM/funciones.h
+

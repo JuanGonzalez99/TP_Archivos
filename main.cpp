@@ -1,9 +1,9 @@
 //#############################################################################
 // ARCHIVO             : main.cpp
-// AUTOR/ES            : Juan Gonzalez
+// AUTOR/ES            : Juan Gonzalez Javier Pereyra
 // VERSION             : 0.01 beta.
 // FECHA DE CREACION   : 30/08/2018.
-// ULTIMA ACTUALIZACION: dd/mm/aaaa.
+// ULTIMA ACTUALIZACION: 01/09/2018.
 // LICENCIA            : GPL (General Public License) - Version 3.
 //
 //  **************************************************************************
@@ -62,6 +62,7 @@
 //                             INCLUSIONES PERSONALES
 //=============================================================================
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
+#include "CSYSTEM/funciones.h" // Libreria de funciones.
 
 
 //==============================================================================
