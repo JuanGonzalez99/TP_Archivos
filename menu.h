@@ -17,6 +17,7 @@ void pedirEnter(const char* txt = "")
 
 void intro()
 {
+
     cout<<"Hola"<<endl;
     pedirEnter("\n\nPresione enter ");
 }
