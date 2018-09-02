@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 30/09/2018.
-// ULTIMA ACTUALIZACION : 01/09/2018.
+// ULTIMA ACTUALIZACION : 02/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu) / Windows 10.
@@ -17,6 +17,9 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 
+//*****************************************************************************
+//                             INCLUSIONES
+//=============================================================================
 #include <iostream> // Libreria para la entrada y salida por consola
 #include <string.h> // Libreria para el manejo de cadenas
 
@@ -24,6 +27,9 @@
 #include "archivos.h" // Libreria con funciones de archivos
 #include "auxiliares.h" // Libreria auxiliar
 
+//==============================================================================
+// DECLARACION DEL ESPACIO DE NOMBRES POR DEFECTO
+//------------------------------------------------------------------------------
 using namespace std;
 
 //*****************************************************************************
@@ -37,7 +43,6 @@ using namespace std;
 //-----------------------------------------------------------------------------
 void intro()
 {
-
     cout << "Hola" << endl;
     pedirEnter("\n\nPresione enter ");
 }
@@ -56,6 +61,10 @@ void salida()
     pedirEnter("\n\nPresione enter ");
 }
 
+void menuConfig();
+void menuBusqueda();
+void menuListados();
+
 //=============================================================================
 // FUNCION : tipo nombre(lista de parametros)
 // ACCION : explicar brevemente que es lo que hace la funcion y como.
@@ -65,45 +74,45 @@ void salida()
 //-----------------------------------------------------------------------------
 void menu()
 {
-
     bool salir = false;
     while(!salir)
     {
         sys::cls();
-        cout << "#=====================#" << endl;
-        cout << "|                     |" << endl;
-        cout << "|      1.             |" << endl;
-        cout << "|      2.             |" << endl;
-        cout << "|      3.             |" << endl;
-        cout << "|      4.             |" << endl;
-        cout << "|      5. Salir       |" << endl;
-        cout << "|                     |" << endl;
-        cout << "+---------------------+" << endl;
+        cout << "#==============================================#" << endl;
+        cout << "|                MENU PRINCIPAL                |" << endl;
+        cout << "#==============================================#" << endl;
+        cout << "|                                              |" << endl;
+        cout << "|      1. -Configurar precio por hora          |" << endl;
+        cout << "|         -Cargar empleados/horas              |" << endl;
+        cout << "|                                              |" << endl;
+        cout << "|      2. Buscar empleado                      |" << endl;
+        cout << "|                                              |" << endl;
+        cout << "|      3. Listados                             |" << endl;
+        cout << "|                                              |" << endl;
+        cout << "|      4. Salir                                |" << endl;
+        cout << "|                                              |" << endl;
+        cout << "+----------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(5);
+        int op = validarOpcion(4);
 
         sys::cls();
         switch(op)
         {
             case 1:
             {
-                cout << "uno";
+                menuConfig();
             }break;
             case 2:
             {
-                cout << "dos";
+                menuBusqueda();
             }break;
             case 3:
             {
-                cout << "tres";
+                menuListados();
             }break;
             case 4:
-            {
-                cout << "cuatro";
-            }break;
-            case 5:
             {
                 salir = true;
             }break;
@@ -113,7 +122,38 @@ void menu()
 
     }//Fin while
 
-}//Fin menu()
+}//Fin función menu()
 
+void menuConfig()
+{
+    bool volver = false;
+    while(!volver)
+    {
+        sys::cls();
+    }//Fin while
+}
+
+void menuBusqueda()
+{
+    bool volver = false;
+    while(!volver)
+    {
+        sys::cls();
+    }//Fin while
+}
+
+void menuListados()
+{
+    bool volver = false;
+    while(!volver)
+    {
+        sys::cls();
+    }//Fin while
+}
 
 #endif // MENU_H_INCLUDED
+
+//=============================================================================
+//                            FIN DE ARCHIVO
+//#############################################################################
+

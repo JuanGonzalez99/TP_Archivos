@@ -17,9 +17,10 @@
 #ifndef ARCHIVOS_H_INCLUDED
 #define ARCHIVOS_H_INCLUDED
 
+//*****************************************************************************
+//                             INCLUSIONES
+//=============================================================================
 #include <cstdio> // Libreria para el manejo de archivos
-
-using namespace std;
 
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
@@ -115,7 +116,9 @@ bool leerArchivo(T *datos, const char *URL)
     return error;
 }
 
-
-
-
 #endif // ARCHIVOS_H_INCLUDED
+
+//=============================================================================
+//                            FIN DE ARCHIVO
+//#############################################################################
+
