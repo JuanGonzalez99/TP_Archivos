@@ -12,7 +12,7 @@
 //=============================================================================
 // DESCRIPCION:
 // aquí va una descripción general de la libreria
-// test
+//
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef ARCHIVOS_H_INCLUDED
 #define ARCHIVOS_H_INCLUDED
