@@ -59,10 +59,16 @@
 const char PRECIOS [] = "./precios.dat";
 const char EMPLEADOS [] = "./empleados.dat";
 
-
 //Constantes para los tipos de empleados
-const int DISENADOR = 0, DESARROLLADOR = 1, ANALISTA = 2;
+const int DISENIADOR = 0, DESARROLLADOR = 1, ANALISTA = 2;
 
+//Estructura para el resguardo de los precios
+struct tPrecios
+{
+    int diseniadores;
+    int desarrolladores;
+    int analistas;
+};
 
 //Estructura generica para los empleados
 struct Empleado
@@ -74,20 +80,10 @@ struct Empleado
     int tipo;
 };
 
-void pedirEnter(const char*);
-
-
 //*****************************************************************************
 //                             INCLUSIONES PERSONALES
 //=============================================================================
 #include "menu.h" // Libreria de menu.
-
-
-//==============================================================================
-// DECLARACION DEL ESPACIO DE NOMBRES POR DEFECTO
-//------------------------------------------------------------------------------
-
-
 
 
 //==============================================================================

@@ -80,7 +80,7 @@ bool escribirArchivo(T *datos, const char *URL)
     bool error = true;
 
     FILE *archivo;
-    archivo = fopen(URL,"rb");
+    archivo = fopen(URL, "ab");
     if( archivo != NULL )
     {
         fwrite(datos, sizeof(T), 1, archivo);
