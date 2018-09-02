@@ -1,52 +1,68 @@
+////#############################################################################
+// ARCHIVO              : menu.h
+// AUTOR                : Juan Gonzalez.
+// FECHA DE CREACION    : 30/09/2018.
+// ULTIMA ACTUALIZACION : 01/09/2018.
+// LICENCIA             : GPL (General Public License) - Version 3.
+//=============================================================================
+// SISTEMA OPERATIVO    : Linux (Ubuntu) / Windows 10.
+// IDE                  : Code::Blocks - 16.01 / 17.12
+// COMPILADOR           : GNU GCC Compiler (Linux) / MinGW (Windows).
+// LICENCIA             : GPL (General Public License) - Version 3.
+//=============================================================================
+// DESCRIPCION:
+// aquí va una descripción general de la libreria
+//
+/////////////////////////////////////////////////////////////////////////////////
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 
 #include <iostream> // Libreria para la entrada y salida por consola
 #include <string.h> // Libreria para el manejo de cadenas
+
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
-#include "archivos.h" // Libreria para las funciones de archivos
+#include "archivos.h" // Libreria con funciones de archivos
+#include "auxiliares.h" // Libreria auxiliar
 
 using namespace std;
 
-void pedirEnter(const char* txt = "")
-{
-    char enter[2];
-    cout << txt;
-    sys::getline(enter, 2);
-}
-
+//*****************************************************************************
+// DEFINICION DE LAS FUNCIONES
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void intro()
 {
 
-    cout<<"Hola"<<endl;
+    cout << "Hola" << endl;
     pedirEnter("\n\nPresione enter ");
 }
 
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void salida()
 {
     sys::cls();
-    cout<<"Chau"<<endl;
+    cout << "Chau" << endl;
     pedirEnter("\n\nPresione enter ");
 }
 
-int validarOpcion(int _max)
-{
-    char op[2];
-    sys::getline(op, 2);
-
-    while( strlen(op) != 1 || op[0] < '1' || op[0] > char(_max+48) )
-    {
-        if( strlen(op) != 1 )
-            cout << "Ingrese un caracter: ";
-        else
-            cout << "Ingrese una opcion del menu: ";
-
-        sys::getline(op, 2);
-    }
-
-    return int(op[0]-48);
-}
-
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void menu()
 {
 
@@ -96,6 +112,7 @@ void menu()
         pedirEnter("\n\nPresione enter para continuar ");
 
     }//Fin while
+
 }//Fin menu()
 
 
