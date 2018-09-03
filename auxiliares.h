@@ -51,6 +51,23 @@ void pedirEnter(const char* txt = "")
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
+bool esEntero(char* cadena)
+{
+    for(int x=0; cadena[x]!='\0'; x++)
+    {
+        if(cadena[x]<'0' || cadena[x]>'9')
+            return false;
+    }
+    return true;
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 int validarOpcion(int _max)
 {
     char op[2];
@@ -68,6 +85,8 @@ int validarOpcion(int _max)
 
     return int(op[0]-48);
 }
+
+
 
 #endif // AUXILIARES_H_INCLUDED
 

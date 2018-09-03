@@ -196,6 +196,8 @@ void menuBusqueda()
     }//Fin while
 }
 
+void mostrarPxH();
+
 void menuListados()
 {
     bool volver = false;
@@ -228,7 +230,7 @@ void menuListados()
         {
             case 1:
             {
-                cout << "uno" << endl;
+                mostrarPxH();
             }break;
             case 2:
             {
@@ -249,6 +251,15 @@ void menuListados()
 
     }//Fin while
 
+}
+
+void mostrarPxH()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                   PRECIO POR HORA SEGUN TIPO DE EMPLEADO                   |" << endl;
+    cout << "#============================================================================#" << endl;
+    pedirEnter("[enter para volver] ");
 }
 
 #endif // MENU_H_INCLUDED
