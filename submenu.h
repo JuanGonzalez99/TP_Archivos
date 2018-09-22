@@ -51,4 +51,41 @@ void mostrarPrecios()
     pedirEnter("\n\nPresione enter para volver ");
 }
 
+void verificarPrecios(tPrecios reg)
+{
+
+    FILE *p;
+    p = fopen(PRECIOS,"rb");
+    if(p == NULL)
+    {
+            exit(1);
+    }
+
+    while(fread(&reg,sizeof(tPrecios),1,p)==1)
+    {
+
+    if(!existeArchivo(PRECIOS))
+    {
+        creaArchivo(PRECIOS);
+        tPrecios aux;
+        aux.diseniadores = 300;
+        aux.desarrolladores = 350;
+        aux.analistas = 400;
+        guardarPrecios(aux);
+    }
+
+    }
+
+
+
+}
+
+void verificarEmpleados(Empleado reg)
+{
+
+
+
+
+}
+
 #endif // SUBMENU_H_INCLUDED
