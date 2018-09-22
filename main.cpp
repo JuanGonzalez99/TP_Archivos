@@ -46,8 +46,10 @@
 //*****************************************************************************
 //                             INCLUSIONES ESTANDAR
 //=============================================================================
-//#include <iostream> // Libreria de flujos de  Entrada/Salida  que contiene  los
+#include <iostream> // Libreria de flujos de  Entrada/Salida  que contiene  los
                     // objetos cin, cout y endl.
+
+using namespace std; // Namespace de cin, cout y endl.
 
 //#include <cstdlib>  // Libreria estandar que contiene la funcion exit().
 
@@ -91,9 +93,9 @@ struct Empleado
 //------------------------------------------------------------------------------
 int main()
 {
-    intro();
+//    intro();
     menuPrincipal();
-//    salida();
+    salida();
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
     //--------------------------------------------------------------------------

@@ -20,17 +20,9 @@
 //*****************************************************************************
 //                             INCLUSIONES
 //=============================================================================
-#include <iostream> // Libreria para la entrada y salida por consola
-#include <string.h> // Libreria para el manejo de cadenas
-
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
 #include "archivos.h" // Libreria con funciones de archivos
 #include "auxiliares.h" // Libreria auxiliar
-
-//==============================================================================
-// DECLARACION DEL ESPACIO DE NOMBRES POR DEFECTO
-//------------------------------------------------------------------------------
-using namespace std;
 
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
@@ -119,8 +111,6 @@ void menuPrincipal()
                 continue;
             }break;
         }//Fin switch
-
-//        pedirEnter("Presione enter para volver ");
 
     }//Fin while
 

@@ -2,7 +2,7 @@
 // ARCHIVO              : auxiliares.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 02/09/2018.
+// ULTIMA ACTUALIZACION : 22/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -20,13 +20,8 @@
 //*****************************************************************************
 //                             INCLUSIONES
 //=============================================================================
-#include <iostream> // Libreria para la entrada y salida por consola
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
 
-//==============================================================================
-// DECLARACION DEL ESPACIO DE NOMBRES POR DEFECTO
-//------------------------------------------------------------------------------
-using namespace std;
 
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
@@ -102,6 +97,22 @@ bool confirmar(const char* texto = "Esta seguro? (s/n)")
         return true;
     else
         return false;
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void toUpper(char* cadena)
+{
+    for(int x=0; cadena[x]!='\0'; x++)
+    {
+        if( cadena[x]>='a' && cadena[x]<='z' )
+            cadena[x] = cadena[x]-32;
+    }
 }
 
 
