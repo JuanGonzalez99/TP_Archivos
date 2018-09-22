@@ -23,6 +23,7 @@
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
 #include "archivos.h" // Libreria con funciones de archivos
 #include "auxiliares.h" // Libreria auxiliar
+#include "submenu.h"
 
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
@@ -107,15 +108,22 @@ void menuPrincipal()
             }break;
             case 4:
             {
-                salir = true;
-                continue;
+                if(confirmar())
+                    return;
             }break;
         }//Fin switch
 
     }//Fin while
 
-}//Fin función menu()
+}
 
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void menuConfig()
 {
     bool volver = false;
@@ -158,8 +166,7 @@ void menuConfig()
             }break;
             case 4:
             {
-                volver = true;
-                continue;
+                return;
             }break;
         }//Fin switch
 
@@ -168,6 +175,13 @@ void menuConfig()
     }//Fin while
 }
 
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void menuBusqueda()
 {
     bool volver = false;
@@ -186,8 +200,13 @@ void menuBusqueda()
     }//Fin while
 }
 
-void mostrarPxH();
-
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void menuListados()
 {
     bool volver = false;
@@ -220,7 +239,7 @@ void menuListados()
         {
             case 1:
             {
-                mostrarPxH();
+                mostrarPrecios();
             }break;
             case 2:
             {
@@ -243,14 +262,6 @@ void menuListados()
 
 }
 
-void mostrarPxH()
-{
-    sys::cls();
-    cout << "#============================================================================#" << endl;
-    cout << "|                   PRECIO POR HORA SEGUN TIPO DE EMPLEADO                   |" << endl;
-    cout << "#============================================================================#" << endl;
-    pedirEnter("[enter para volver] ");
-}
 
 #endif // MENU_H_INCLUDED
 
