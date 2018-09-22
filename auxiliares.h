@@ -21,7 +21,7 @@
 //                             INCLUSIONES
 //=============================================================================
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
-
+#include <cstring>
 
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
