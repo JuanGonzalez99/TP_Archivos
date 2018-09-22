@@ -115,6 +115,34 @@ void toUpper(char* cadena)
     }
 }
 
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+bool strSub(char* cad, char* subc)                    //  3.10
+{
+    bool igualdad;
+
+    for(int x=0; cad[x]!='\0'; x++)
+    {
+        igualdad = true;
+        if(cad[x]==subc[0])
+        {
+            for(int y=0; subc[y]!='\0'; y++)
+            {
+                if(cad[x+y]!=subc[y])
+                    igualdad=false;
+            }
+
+            if(igualdad)
+                return true;
+        }
+    }
+    return false;
+}
 
 #endif // AUXILIARES_H_INCLUDED
 
