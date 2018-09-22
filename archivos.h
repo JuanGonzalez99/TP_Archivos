@@ -154,7 +154,7 @@ void buscarEmpleado(char *cad, Empleado *vec)
 // PARAMETROS: DNI,NOMBRE,APELLIDO,HORAS,TIPO
 // DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
-void guardaFreelancers(Empleado reg,int DNI, char *NOMBRE, char *APELLIDO, int HORAS, int TIPO)
+void guardaFreelancers(Empleado reg)
 {
 
     FILE *p;
@@ -163,12 +163,6 @@ void guardaFreelancers(Empleado reg,int DNI, char *NOMBRE, char *APELLIDO, int H
     {
         exit(1);
     }
-
-    reg.DNI = DNI;
-    reg.horas = HORAS;
-    strcpy(NOMBRE,reg.nombre);
-    strcpy(APELLIDO,reg.apellido);
-    reg.tipo = TIPO;
 
     fwrite(&reg,sizeof(Empleado),1,p);
     fclose(p);
