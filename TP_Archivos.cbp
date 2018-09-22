@@ -47,6 +47,7 @@ AYUDANTE : Fernando Calabuig.
 		<Unit filename="LICENCIA GPL/Licencia GPL (traduccion NO OFICIAL - castellano argentina).txt" />
 		<Unit filename="LICENCIA GPL/Licencia GPL original (ingles).txt" />
 		<Unit filename="archivos.h" />
+		<Unit filename="auxiliares.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu.h" />
 		<Extensions>
