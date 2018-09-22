@@ -1,7 +1,24 @@
+////#############################################################################
+// ARCHIVO              : menu.h
+// AUTOR                : Juan Gonzalez.
+// FECHA DE CREACION    : 22/09/2018.
+// ULTIMA ACTUALIZACION : 22/09/2018.
+// LICENCIA             : GPL (General Public License) - Version 3.
+//=============================================================================
+// SISTEMA OPERATIVO    : Windows 10.
+// IDE                  : Code::Blocks - 17.12
+// COMPILADOR           : GNU GCC Compiler (Linux) / MinGW (Windows).
+// LICENCIA             : GPL (General Public License) - Version 3.
+//=============================================================================
+// DESCRIPCION:
+// aquí va una descripción general de la libreria
+//
+/////////////////////////////////////////////////////////////////////////////////
 #ifndef SUBMENU_H_INCLUDED
 #define SUBMENU_H_INCLUDED
 
-
+//*****************************************************************************
+// DEFINICION DE LAS FUNCIONES
 //=============================================================================
 // FUNCION : tipo nombre(lista de parametros)
 // ACCION : explicar brevemente que es lo que hace la funcion y como.
@@ -29,6 +46,7 @@ void mostrarPrecios()
     cout << "Diseñadores: " << precios.diseniadores << endl;
     cout << "Desarrolladores: " << precios.desarrolladores << endl;
     cout << "Analistas: " << precios.analistas << endl;
+    cout << endl;
     cout << "------------------------------------------------------------------------------" << endl;
     pedirEnter("\n\nPresione enter para volver ");
 }

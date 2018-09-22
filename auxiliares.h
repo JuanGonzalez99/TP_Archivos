@@ -88,7 +88,7 @@ int validarOpcion(int _max)
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-bool confirmar(const char* texto = "Esta seguro? (s/n)")
+bool confirmar(const char* texto = "Esta seguro? (s/n) ")
 {
     char conf[2];
     cout << texto;
@@ -160,7 +160,6 @@ bool strSub(char* cad, char* subc)                    //  3.10
     return false;
 }
 
-
 //=============================================================================
 // FUNCION : primercaracterUpper(*cad)
 // ACCION : Transformar el primero caracter de la cadena en mayuscula
@@ -168,9 +167,16 @@ bool strSub(char* cad, char* subc)                    //  3.10
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : no devuelve nada ya que es void.
 //-----------------------------------------------------------------------------
-void primercaracterUpper(char *cad)
+void firstUpper(char *cad)
 {
-    cad[0] = cad[0] - 32;
+    if( cad[0]>='a' && cad[0]<='z')
+        cad[0] -= 32;
+
+    for(int x=1; cad[x]!='\0'; x++)
+    {
+        if( cad[x]>='A' && cad[x]<='Z' )
+            cad[x] += 32;
+    }
 }
 
 #endif // AUXILIARES_H_INCLUDED

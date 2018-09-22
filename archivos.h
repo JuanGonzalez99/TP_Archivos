@@ -70,54 +70,6 @@ bool creaArchivo(const char *URL)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
-template <typename T>
-bool escribirArchivo(T *datos, const char *URL)
-{
-    bool error = true;
-
-    FILE *archivo;
-    archivo = fopen(URL, "ab");
-    if( archivo != NULL )
-    {
-        fwrite(datos, sizeof(T), 1, archivo);
-        fclose(archivo);
-        error = false;
-    }
-
-    return error;
-}
-
-//=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
-template <typename T>
-bool leerArchivo(T *datos, const char *URL)
-{
-    bool error = true;
-
-    FILE *archivo;
-    archivo = fopen(URL,"rb");
-    if( archivo != NULL )
-    {
-        fread(datos, sizeof(T), 1, archivo);
-        fclose(archivo);
-        error = false;
-    }
-
-    return error;
-}
-
-//=============================================================================
 // FUNCION : leerPrecioh()
 // ACCION : Abre el archivo, procede a leerlo y devolver una estructura auxiliar
 // DEVUELVE : tPrecios / Devuelve la estructura auxiliar para luego ser usada por
