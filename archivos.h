@@ -198,9 +198,9 @@ void buscarEmpleado(char *cad, Empleado *vec)
 
 //=============================================================================
 // FUNCION : guardaFreelancers(reg,DNI,*NOMBRE,*)
-// ACCION : lee la cadena apartir de uno dos strings y devuelve el valor completo.
-// PARAMETROS: XXXXXXXXXXx
-// DEVUELVE : no devuelve nada al ser una funcion void.
+// ACCION : Se ingresa tanto la estructura , tanto así como el resguardo de sus variables.
+// PARAMETROS: DNI,NOMBRE,APELLIDO,HORAS,TIPO
+// DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
 void guardaFreelancers(Empleado reg,int DNI, char *NOMBRE, char *APELLIDO, int HORAS, int TIPO)
 {
@@ -211,6 +211,12 @@ void guardaFreelancers(Empleado reg,int DNI, char *NOMBRE, char *APELLIDO, int H
     {
         exit(1);
     }
+
+    reg.DNI = DNI;
+    reg.horas = HORAS;
+    strcpy(NOMBRE,reg.nombre);
+    strcpy(APELLIDO,reg.apellido);
+    reg.tipo = TIPO;
 
     fwrite(&reg,sizeof(Empleado),1,p);
     fclose(p);
