@@ -116,6 +116,22 @@ void toUpper(char* cadena)
 }
 
 //=============================================================================
+// FUNCION : toLower(*cadena)
+// ACCION : transforma toda la cadena de caracteres en minuscula
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void toLower(char* cadena)
+{
+    for(int x=0; cadena[x]!='\0'; x++)
+    {
+        if( cadena[x]>='a' && cadena[x]<='z' )
+            cadena[x] = cadena[x]+32;
+    }
+}
+
+//=============================================================================
 // FUNCION : tipo nombre(lista de parametros)
 // ACCION : explicar brevemente que es lo que hace la funcion y como.
 // PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
@@ -142,6 +158,19 @@ bool strSub(char* cad, char* subc)                    //  3.10
         }
     }
     return false;
+}
+
+
+//=============================================================================
+// FUNCION : primercaracterUpper(*cad)
+// ACCION : Transformar el primero caracter de la cadena en mayuscula
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : no devuelve nada ya que es void.
+//-----------------------------------------------------------------------------
+void primercaracterUpper(char *cad)
+{
+    cad[0] = cad[0] - 32;
 }
 
 #endif // AUXILIARES_H_INCLUDED
