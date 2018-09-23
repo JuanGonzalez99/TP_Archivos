@@ -138,7 +138,7 @@ void toLower(char* cadena)
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-bool strSub(char* cad, char* subc)                    //  3.10
+bool strSub(char* cad, char* subc)
 {
     bool igualdad;
 
