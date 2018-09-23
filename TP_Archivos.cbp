@@ -50,6 +50,7 @@ AYUDANTE : Fernando Calabuig.
 		<Unit filename="auxiliares.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu.h" />
+		<Unit filename="submenu.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />
