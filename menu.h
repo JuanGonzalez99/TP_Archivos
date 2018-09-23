@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 30/09/2018.
-// ULTIMA ACTUALIZACION : 02/09/2018.
+// ULTIMA ACTUALIZACION : 22/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu) / Windows 10.
@@ -55,7 +55,6 @@ void salida()
 }
 
 void menuConfig();
-void menuBusqueda();
 void menuListados();
 
 //=============================================================================
@@ -169,33 +168,6 @@ void menuConfig()
                 return;
             }break;
         }//Fin switch
-
-        pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
-
-    }//Fin while
-}
-
-//=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
-void menuBusqueda()
-{
-    bool volver = false;
-    while(!volver)
-    {
-        sys::cls();
-        cout << "#==============================================================================#" << endl;
-        cout << "|                            BUSQUEDA DE EMPLEADO                              |" << endl;
-        cout << "#==============================================================================#" << endl;
-        cout << endl;
-        cout << "A quien desea buscar? ";
-
-        if(validarOpcion(10))
-            return;
 
     }//Fin while
 }

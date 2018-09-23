@@ -3,7 +3,7 @@
 // AUTORES              : Juan Gonzalez, Javier Pereyra.
 // VERSION              : 0.01 beta.
 // FECHA DE CREACION    : 30/08/2018.
-// ULTIMA ACTUALIZACION : 01/09/2018.
+// ULTIMA ACTUALIZACION : 22/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //
 //  **************************************************************************
