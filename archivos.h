@@ -236,7 +236,6 @@ void llenarFreelances(Freelance *v)
 bool existeFreelancedni(int dni)
 {
 
-
     bool existe = false;
     FILE *p;
     p = fopen(FREELANCES,"rb");
@@ -250,13 +249,15 @@ bool existeFreelancedni(int dni)
 
         if(dni == reg.DNI)
         {
-            existe = false;
+            existe = true;
+            fclose(p);
             return existe;
 
         }
 
     }
 
+    fclose(p);
     return existe;
 
 
