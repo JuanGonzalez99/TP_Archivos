@@ -1,8 +1,8 @@
 ////#############################################################################
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
-// FECHA DE CREACION    : 30/09/2018.
-// ULTIMA ACTUALIZACION : 22/09/2018.
+// FECHA DE CREACION    : 30/08/2018.
+// ULTIMA ACTUALIZACION : 25/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu) / Windows 10.
@@ -54,8 +54,9 @@ void salida()
     pedirEnter("\n\nPresione enter ");
 }
 
-void menuConfig();
-void menuListados();
+void menuPrecio();
+void menuFreelancers();
+void menuReportes();
 
 //=============================================================================
 // FUNCION : tipo nombre(lista de parametros)
@@ -74,13 +75,11 @@ void menuPrincipal()
         cout << "|                               MENU PRINCIPAL                               |" << endl;
         cout << "#============================================================================#" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      1.   Configurar precio por hora                       |" << endl;
-        cout << "|                                Cargar empleados                            |" << endl;
-        cout << "|                                  Cargar horas                              |" << endl;
+        cout << "|                      1.        Precio por hora                             |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      2.        Buscar empleado                             |" << endl;
+        cout << "|                      2.          Freelancers                               |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      3.            Listados                                |" << endl;
+        cout << "|                      3.            Reportes                                |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "|                      4.             Salir                                  |" << endl;
         cout << "|                                                                            |" << endl;
@@ -95,15 +94,15 @@ void menuPrincipal()
         {
             case 1:
             {
-                menuConfig();
+                menuPrecio();
             }break;
             case 2:
             {
-                menuBusqueda();
+                menuFreelancers();
             }break;
             case 3:
             {
-                menuListados();
+                menuReportes();
             }break;
             case 4:
             {
@@ -123,80 +122,21 @@ void menuPrincipal()
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void menuConfig()
+void menuPrecio()
 {
     bool volver = false;
     while(!volver)
     {
         sys::cls();
         cout << "#============================================================================#" << endl;
-        cout << "|                                CONFIG/CARGA                                |" << endl;
+        cout << "|                               PRECIO POR HORA                              |" << endl;
         cout << "#============================================================================#" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      1.   Configurar precio por hora                       |" << endl;
+        cout << "|                      1.    Mostrar precio por hora                         |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      2.       Cargar empleados                             |" << endl;
+        cout << "|                      2.  Configurar precio por hora                        |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      3.     Cargar horas de todos                          |" << endl;
-        cout << "|                             Cargar horas por DNI                           |" << endl;
-        cout << "|                                                                            |" << endl;
-        cout << "|                      4.            Volver                                  |" << endl;
-        cout << "|                                                                            |" << endl;
-        cout << "+----------------------------------------------------------------------------+" << endl;
-        cout << endl;
-        cout << "Ingrese una opcion: ";
-
-        int op = validarOpcion(4);
-
-        sys::cls();
-        switch(op)
-        {
-            case 1:
-            {
-                cout << "uno" << endl;
-            }break;
-            case 2:
-            {
-                cout << "dos" << endl;
-            }break;
-            case 3:
-            {
-                cout << "tres" << endl;
-            }break;
-            case 4:
-            {
-                return;
-            }break;
-        }//Fin switch
-
-    }//Fin while
-}
-
-//=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
-void menuListados()
-{
-    bool volver = false;
-    while(!volver)
-    {
-        sys::cls();
-        cout << "#============================================================================#" << endl;
-        cout << "|                                  LISTADOS                                  |" << endl;
-        cout << "#============================================================================#" << endl;
-        cout << "|                                                                            |" << endl;
-        cout << "|                      1.    Precio por hora segun                           |" << endl;
-        cout << "|                               tipo de empleado                             |" << endl;
-        cout << "|                                                                            |" << endl;
-        cout << "|                      2.    Horas trabajadas por                            |" << endl;
-        cout << "|                            cada tipo de empleado                           |" << endl;
-        cout << "|                                                                            |" << endl;
-        cout << "|                      3.       Listado general                              |" << endl;
-        cout << "|                                 de empleados                               |" << endl;
+        cout << "|                      3.             Nada                                   |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "|                      4.            Volver                                  |" << endl;
         cout << "|                                                                            |" << endl;
@@ -215,25 +155,132 @@ void menuListados()
             }break;
             case 2:
             {
-                cout << "dos" << endl;
+                cambiarPrecios();
+            }break;
+            case 3:
+            {
+                cout << "Nada" << endl;
+                pedirEnter("Presion enter para volver ");
+            }break;
+            case 4:
+            {
+                return;
+            }break;
+        }//Fin switch
+
+    }//Fin while
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void menuFreelancers()
+{
+    bool volver = false;
+    while(!volver)
+    {
+        sys::cls();
+        cout << "#============================================================================#" << endl;
+        cout << "|                                 FREELANCES                                 |" << endl;
+        cout << "#============================================================================#" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      1.      Agregar freelance                             |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      2.       Buscar freelance                             |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      3.             Nada                                   |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      4.            Volver                                  |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "+----------------------------------------------------------------------------+" << endl;
+        cout << endl;
+        cout << "Ingrese una opcion: ";
+
+        int op = validarOpcion(4);
+
+        sys::cls();
+        switch(op)
+        {
+            case 1:
+            {
+                cout << "uno" << endl;
+                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+            }break;
+            case 2:
+            {
+                menuBusqueda();
             }break;
             case 3:
             {
                 cout << "tres" << endl;
+                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
             }break;
             case 4:
             {
-                volver = true;
-                continue;
+                return;
             }break;
         }//Fin switch
 
-        pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
 
     }//Fin while
 
 }
 
+void menuReportes()
+{
+    bool volver = false;
+    while(!volver)
+    {
+        sys::cls();
+        cout << "#============================================================================#" << endl;
+        cout << "|                                  REPORTES                                  |" << endl;
+        cout << "#============================================================================#" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      1.      Agregar freelance                             |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      2.       Buscar freelance                             |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      3.             Nada                                   |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      4.            Volver                                  |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "+----------------------------------------------------------------------------+" << endl;
+        cout << endl;
+        cout << "Ingrese una opcion: ";
+
+        int op = validarOpcion(4);
+
+        sys::cls();
+        switch(op)
+        {
+            case 1:
+            {
+                cout << "uno" << endl;
+                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+            }break;
+            case 2:
+            {
+                cout << "dos" << endl;
+                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+            }break;
+            case 3:
+            {
+                cout << "tres" << endl;
+                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+            }break;
+            case 4:
+            {
+                return;
+            }break;
+        }//Fin switch
+
+
+    }//Fin while
+}
 
 #endif // MENU_H_INCLUDED
 
