@@ -170,6 +170,12 @@ void guardaFreelances(Freelance reg)
 
 }
 
+//=============================================================================
+// FUNCION : fileSize(*v)
+// ACCION : Se ingresa la estructura para luego cargar la misma.
+// PARAMETROS: *v
+// DEVUELVE : Nada, es una funcion void.
+//-----------------------------------------------------------------------------
 long fileSize(const char *URL)
 {
     FILE *p;
@@ -220,6 +226,49 @@ void llenarFreelances(Freelance *v)
 
 
 }
+
+//=============================================================================
+// FUNCION : existeFreelancedni
+// ACCION : Se ingresa el dni y devuelve un valor booleano.
+// PARAMETROS: dni
+// DEVUELVE : bool ( el mismo se usa para validar si existe o no el freelance ).
+//-----------------------------------------------------------------------------
+bool existeFreelancedni(int dni)
+{
+
+
+    bool existe = false;
+    FILE *p;
+    p = fopen(FREELANCES,"rb");
+    if(p==NULL){
+        exit(1);
+    }
+    Freelance reg;
+
+    while(fread(&reg,sizeof(Freelance),1,p))
+    {
+
+        if(dni == reg.DNI)
+        {
+            existe = false;
+            return existe;
+
+        }
+
+    }
+
+    return existe;
+
+
+}
+
+//=============================================================================
+// FUNCION : buscarFreelance
+// ACCION : se ingresa el dni y se devuelve la estructura para su posterior
+// manipulacion.
+// PARAMETROS: dni
+// DEVUELVE : Freelance , estructura de datos.
+//-----------------------------------------------------------------------------
 
 
 #endif // ARCHIVOS_H_INCLUDED
