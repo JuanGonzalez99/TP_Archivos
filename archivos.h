@@ -34,39 +34,15 @@
 //-----------------------------------------------------------------------------
 bool existeArchivo(const char *URL)
 {
-    bool existe = false;
-
-    FILE *archivo;
-    archivo = fopen(URL,"rb");
-    if( archivo != NULL )
+    FILE *p;
+    p = fopen(URL,"rb");
+    if( p == NULL )
     {
-        fclose(archivo);
-        existe = true;
+        return false;
     }
 
-    return existe;
-}
-
-//=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
-bool creaArchivo(const char *URL)
-{
-    bool estado = false;
-
-    FILE *archivo;
-    archivo = fopen(URL,"wb");
-    if( archivo != NULL )
-    {
-        fclose(archivo);
-        estado = true;
-    }
-
-    return estado;
+    fclose(p);
+    return true;
 }
 
 //=============================================================================
@@ -111,40 +87,6 @@ void guardarPrecios(tPrecios reg)
 
     fwrite(&reg,sizeof(tPrecios),1,p);
     fclose(p);
-
-}
-
-//=============================================================================
-// FUNCION : buscarEmpleado(*cad, *vec)
-// ACCION : lee la cadena apartir de uno dos strings y devuelve el valor completo.
-// PARAMETROS: XXXXXXXXXXx
-// DEVUELVE : no devuelve nada al ser una funcion void.
-//-----------------------------------------------------------------------------
-void buscarFreelance(char *cad, Freelance *vec)
-{
-
-    Freelance aux;
-    int i = 0;
-    FILE *p;
-    p = fopen(FREELANCES,"rb");
-    if(p==NULL)
-    {
-        exit(1);
-    }
-
-    while(fread(&aux,sizeof(aux),1,p) == 1)
-    {
-
-        if(strSub(cad,vec[i].nombre) == 1 || strSub(cad,vec[i].apellido) == 1)
-        {
-
-            aux = vec[i];
-            i++;
-
-        }
-
-    }
-
 
 }
 
@@ -235,8 +177,6 @@ void llenarFreelances(Freelance *v)
 //-----------------------------------------------------------------------------
 bool existeFreelance(int dni)
 {
-
-
     FILE *p;
     p = fopen(FREELANCES,"rb");
     if(p==NULL){
@@ -254,7 +194,6 @@ bool existeFreelance(int dni)
             return true;
 
         }
-
     }
 
     fclose(p);
