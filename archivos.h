@@ -233,10 +233,10 @@ void llenarFreelances(Freelance *v)
 // PARAMETROS: dni
 // DEVUELVE : bool ( el mismo se usa para validar si existe o no el freelance ).
 //-----------------------------------------------------------------------------
-bool existeFreelancedni(int dni)
+bool existeFreelance(int dni)
 {
 
-    bool existe = false;
+
     FILE *p;
     p = fopen(FREELANCES,"rb");
     if(p==NULL){
@@ -249,16 +249,16 @@ bool existeFreelancedni(int dni)
 
         if(dni == reg.DNI)
         {
-            existe = true;
+
             fclose(p);
-            return existe;
+            return true;
 
         }
 
     }
 
     fclose(p);
-    return existe;
+    return false;
 
 
 }
@@ -270,6 +270,30 @@ bool existeFreelancedni(int dni)
 // PARAMETROS: dni
 // DEVUELVE : Freelance , estructura de datos.
 //-----------------------------------------------------------------------------
+Freelance buscarFreelanceDNI(int dni)
+{
+
+    FILE *p;
+    p = fopen(FREELANCES,"rb");
+    if(p==NULL)
+    {
+        exit(1);
+    }
+    Freelance auxiliar; // Armo una estructura auxiliar para la copia binaria de datos y la devuelvo a la misma si solo existe el DNI.
+
+    while(fread(&auxiliar,sizeof(Freelance),1,p)){
+
+    if(dni == auxiliar.DNI)
+    {
+
+    return auxiliar; //retorno toda la estructura
+
+    }
+    }
+
+return auxiliar;
+
+}
 
 
 #endif // ARCHIVOS_H_INCLUDED
