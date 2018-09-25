@@ -2,7 +2,7 @@
 // ARCHIVO              : archivos.h
 // AUTOR                : Javier Pereyra
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 22/09/2018.
+// ULTIMA ACTUALIZACION : 25/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu).
@@ -120,13 +120,13 @@ void guardarPrecios(tPrecios reg)
 // PARAMETROS: XXXXXXXXXXx
 // DEVUELVE : no devuelve nada al ser una funcion void.
 //-----------------------------------------------------------------------------
-void buscarEmpleado(char *cad, Empleado *vec)
+void buscarFreelance(char *cad, Freelance *vec)
 {
 
-    Empleado aux;
+    Freelance aux;
     int i = 0;
     FILE *p;
-    p = fopen(EMPLEADOS,"rb");
+    p = fopen(FREELANCES,"rb");
     if(p==NULL)
     {
         exit(1);
@@ -154,17 +154,17 @@ void buscarEmpleado(char *cad, Empleado *vec)
 // PARAMETROS: DNI,NOMBRE,APELLIDO,HORAS,TIPO
 // DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
-void guardaFreelancers(Empleado reg)
+void guardaFreelances(Freelance reg)
 {
 
     FILE *p;
-    p = fopen(EMPLEADOS,"ab");
+    p = fopen(FREELANCES,"ab");
     if(p==NULL)
     {
         exit(1);
     }
 
-    fwrite(&reg,sizeof(Empleado),1,p);
+    fwrite(&reg,sizeof(Freelance),1,p);
     fclose(p);
 
 

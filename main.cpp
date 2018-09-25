@@ -3,7 +3,7 @@
 // AUTORES              : Juan Gonzalez, Javier Pereyra.
 // VERSION              : 0.01 beta.
 // FECHA DE CREACION    : 30/08/2018.
-// ULTIMA ACTUALIZACION : 22/09/2018.
+// ULTIMA ACTUALIZACION : 25/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //
 //  **************************************************************************
@@ -51,7 +51,7 @@
 
 using namespace std; // Namespace de cin, cout y endl.
 
-//#include <cstdlib>  // Libreria estandar que contiene la funcion exit().
+#include <cstdlib>  // Libreria estandar que contiene la funcion exit().
 
 
 //*****************************************************************************
@@ -59,7 +59,7 @@ using namespace std; // Namespace de cin, cout y endl.
 //=============================================================================
 //Constantes para las direcciones de los archivos
 const char PRECIOS [] = "./precios.dat";
-const char EMPLEADOS [] = "./empleados.dat";
+const char FREELANCES [] = "./freelances.dat";
 
 //Constantes para los tipos de empleados
 const int DISENIADOR = 0, DESARROLLADOR = 1, ANALISTA = 2;
@@ -72,8 +72,8 @@ struct tPrecios
     int analistas;
 };
 
-//Estructura generica para los empleados
-struct Empleado
+//Estructura generica para los freelancers
+struct Freelance
 {
     int DNI;
     char nombre[30];
@@ -95,7 +95,7 @@ int main()
 {
 //    intro();
     menuPrincipal();
-    salida();
+//    salida();
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
     //--------------------------------------------------------------------------
