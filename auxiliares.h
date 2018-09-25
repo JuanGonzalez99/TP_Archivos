@@ -46,23 +46,6 @@ void pedirEnter(const char* txt = "")
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-bool esEntero(char* cadena)
-{
-    for(int x=0; cadena[x]!='\0'; x++)
-    {
-        if(cadena[x]<'0' || cadena[x]>'9')
-            return false;
-    }
-    return true;
-}
-
-//=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
 int validarOpcion(int _max)
 {
     char op[2];
@@ -97,6 +80,36 @@ bool confirmar(const char* texto = "Esta seguro? (s/n) ")
         return true;
     else
         return false;
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void llenarEspacio(int cant)
+{
+    for(int x=0; x<cant; x++)
+        cout << " ";
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+bool esEntero(char* cadena)
+{
+    for(int x=0; cadena[x]!='\0'; x++)
+    {
+        if(cadena[x]<'0' || cadena[x]>'9')
+            return false;
+    }
+    return true;
 }
 
 //=============================================================================
@@ -177,6 +190,24 @@ void firstUpper(char *cad)
         if( cad[x]>='A' && cad[x]<='Z' )
             cad[x] += 32;
     }
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+int intlen(unsigned int n)
+{
+    int cont = 0;
+    do{
+        n /= 10;
+        cont++;
+    }while(n > 0);
+
+    return cont;
 }
 
 #endif // AUXILIARES_H_INCLUDED

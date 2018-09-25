@@ -55,9 +55,9 @@ void mostrarPrecios()
     cout << "#============================================================================#" << endl;
     cout << "|          Tipo de freelance          |                 $$$                  |" << endl;
     cout << "+----------------------------------------------------------------------------+" << endl;
-    cout << "|             Diseñadores             |  $" << p.diseniadores << endl;
-    cout << "|           Desarrolladores           |  $" << p.desarrolladores << endl;
-    cout << "|              Analistas              |  $" << p.analistas << endl;
+    cout << "|             Diseñadores             |  $" << p.diseniadores; llenarEspacio(35-intlen(p.diseniadores)); cout << "|" << endl;
+    cout << "|           Desarrolladores           |  $" << p.desarrolladores; llenarEspacio(35-intlen(p.desarrolladores)); cout << "|" << endl;
+    cout << "|              Analistas              |  $" << p.analistas; llenarEspacio(35-intlen(p.analistas)); cout << "|" << endl;
     cout << "------------------------------------------------------------------------------" << endl;
     pedirEnter("\n\nPresione enter para volver ");
 }
@@ -69,11 +69,27 @@ void mostrarPrecios()
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void cambiarPrecios()
+void menuConfigPrecios()
 {
     sys::cls();
     cout << "#============================================================================#" << endl;
     cout << "|                    CONFIGURACION DE LOS PRECIOS POR HORA                   |" << endl;
+    cout << "#============================================================================#" << endl;
+    pedirEnter("\n\n\nEnter ");
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void menuAgregar()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                              AGREGAR FREELANCE                             |" << endl;
     cout << "#============================================================================#" << endl;
     pedirEnter("\n\n\nEnter ");
 }
@@ -123,12 +139,75 @@ void menuBusqueda()
         cout << "|                          BUSQUEDA DE FREELANCERS                             |" << endl;
         cout << "#==============================================================================#" << endl;
         cout << endl;
-        cout << "A quien desea buscar? ";
-
-        if(validarOpcion(10))
-            return;
+        pedirEnter("Enter ");
+        return;
 
     }//Fin while
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void menuCargaGral()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                               CARGA GENERAL                                |" << endl;
+    cout << "#============================================================================#" << endl;
+    pedirEnter("\n\n\nEnter ");
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void menuCargaDNI()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                               CARGA POR DNI                                |" << endl;
+    cout << "#============================================================================#" << endl;
+    pedirEnter("\n\n\nEnter ");
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void reportePorTipo()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                        REPORTE POR TIPO DE FREELANCE                       |" << endl;
+    cout << "#============================================================================#" << endl;
+    pedirEnter("\n\n\nEnter ");
+
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void reporteGeneral()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                              REPORTE GENERAL                               |" << endl;
+    cout << "#============================================================================#" << endl;
+    pedirEnter("\n\n\nEnter ");
 }
 
 #endif // SUBMENU_H_INCLUDED
