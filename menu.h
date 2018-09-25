@@ -34,7 +34,7 @@
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void intro()
+void bienvenida()
 {
     cout << "Hola" << endl;
     pedirEnter("\n\nPresione enter ");
@@ -47,7 +47,7 @@ void intro()
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void salida()
+void despedida()
 {
     sys::cls();
     cout << "Chau" << endl;
@@ -155,7 +155,7 @@ void menuPrecio()
             }break;
             case 2:
             {
-                cambiarPrecios();
+                menuConfigPrecios();
             }break;
             case 3:
             {
@@ -192,23 +192,24 @@ void menuFreelancers()
         cout << "|                                                                            |" << endl;
         cout << "|                      2.       Buscar freelance                             |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      3.             Nada                                   |" << endl;
+        cout << "|                      3.    Carga de horas general                          |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      4.            Volver                                  |" << endl;
+        cout << "|                      4.    Carga de horas por DNI                          |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      5.            Volver                                  |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "+----------------------------------------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(4);
+        int op = validarOpcion(5);
 
         sys::cls();
         switch(op)
         {
             case 1:
             {
-                cout << "uno" << endl;
-                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+                menuAgregar();
             }break;
             case 2:
             {
@@ -216,10 +217,13 @@ void menuFreelancers()
             }break;
             case 3:
             {
-                cout << "tres" << endl;
-                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+                menuCargaGral();
             }break;
             case 4:
+            {
+                menuCargaDNI();
+            }break;
+            case 5:
             {
                 return;
             }break;
@@ -240,9 +244,10 @@ void menuReportes()
         cout << "|                                  REPORTES                                  |" << endl;
         cout << "#============================================================================#" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      1.      Agregar freelance                             |" << endl;
+        cout << "|                      1.      Horas trabajadas por                          |" << endl;
+        cout << "|                                tipo de freelance                           |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      2.       Buscar freelance                             |" << endl;
+        cout << "|                      2.        Reporte general                             |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "|                      3.             Nada                                   |" << endl;
         cout << "|                                                                            |" << endl;
@@ -259,18 +264,16 @@ void menuReportes()
         {
             case 1:
             {
-                cout << "uno" << endl;
-                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+                reportePorTipo();
             }break;
             case 2:
             {
-                cout << "dos" << endl;
-                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+                reporteGeneral();
             }break;
             case 3:
             {
-                cout << "tres" << endl;
-                pedirEnter("\n\n[pedido de enter auxiliar/temporal] ");
+                cout << "Nada" << endl;
+                pedirEnter("Presione enter para volver ");
             }break;
             case 4:
             {
