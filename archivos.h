@@ -270,6 +270,30 @@ bool existeFreelancedni(int dni)
 // PARAMETROS: dni
 // DEVUELVE : Freelance , estructura de datos.
 //-----------------------------------------------------------------------------
+Freelance buscarFreelance(int dni)
+{
+
+    FILE *p;
+    p = fopen(FREELANCES,"rb");
+    if(p==NULL)
+    {
+        exit(1);
+    }
+    Freelance auxiliar; // Armo una estructura auxiliar para la copia binaria de datos y la devuelvo a la misma si solo existe el DNI.
+
+    while(fread(&auxiliar,sizeof(Freelance),1,p)){
+
+    if(dni == auxiliar.DNI)
+    {
+
+    return auxiliar; //retorno toda la estructura
+
+    }
+    }
+
+
+
+}
 
 
 #endif // ARCHIVOS_H_INCLUDED
