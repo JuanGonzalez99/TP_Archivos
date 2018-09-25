@@ -170,6 +170,57 @@ void guardaFreelances(Freelance reg)
 
 }
 
+long fileSize(const char *URL)
+{
+    FILE *p;
+    p = fopen(URL,"ab");
+    if(p==NULL){
+        exit(1);
+    }
+    fseek(p,0,2);
+    long cantidadBytes = ftell(p);
+    fclose(p);
+    return cantidadBytes;
+
+}
+
+//=============================================================================
+// FUNCION : llenarFreelances(*v)
+// ACCION : Se ingresa la estructura para luego cargar la misma.
+// PARAMETROS: *v
+// DEVUELVE : Nada, es una funcion void.
+//-----------------------------------------------------------------------------
+void llenarFreelances(Freelance *v)
+{
+
+    // Asignacion dinamica de memoria para el vector de estructuras Freelance.
+    long tamanodeArchivo;
+    tamanodeArchivo = fileSize(FREELANCES); //<< TODO:tengo que ver por que no me esta tomando la URL.
+
+    v=(Freelance *) malloc(tamanodeArchivo);
+    if(v==NULL){
+        exit(2);
+    }
+
+    // Asignacion de datos de freelance al vector.
+    FILE *p;
+    p = fopen(FREELANCES,"rb");
+    if(p==NULL){
+        exit(1);
+    }
+
+    int i = 0;
+
+    while(fread(&v[i],sizeof(Freelance),1,p)==1)
+    {
+    i++;
+    }
+
+    fclose(p);
+
+
+}
+
 
 #endif // ARCHIVOS_H_INCLUDED
 
