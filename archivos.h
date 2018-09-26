@@ -113,12 +113,12 @@ void guardarFreelance(Freelance reg)
 }
 
 //=============================================================================
-// FUNCION : fileSize(*v)
+// FUNCION : cantRegistros(*URL)
 // ACCION : Se ingresa la estructura para luego cargar la misma.
 // PARAMETROS: *v
 // DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
-long fileSize(const char *URL)
+long cantRegistros(const char *URL)
 {
     FILE *p;
     p = fopen(URL,"ab");
@@ -128,7 +128,7 @@ long fileSize(const char *URL)
     fseek(p,0,2);
     long cantidadBytes = ftell(p);
     fclose(p);
-    return cantidadBytes;
+    return cantidadBytes/sizeof(struct Freelance);
 
 }
 
@@ -140,15 +140,6 @@ long fileSize(const char *URL)
 //-----------------------------------------------------------------------------
 void llenarFreelances(Freelance *v)
 {
-
-    // Asignacion dinamica de memoria para el vector de estructuras Freelance.
-    long tamanodeArchivo;
-    tamanodeArchivo = fileSize(FREELANCES); //<< TODO:tengo que ver por que no me esta tomando la URL.
-
-    v=(Freelance *) malloc(tamanodeArchivo);
-    if(v==NULL){
-        exit(2);
-    }
 
     // Asignacion de datos de freelance al vector.
     FILE *p;
@@ -234,6 +225,14 @@ Freelance buscarFreelanceDNI(int dni)
 return auxiliar;
 
 }
+
+//=============================================================================
+// FUNCION : contarReg
+// ACCION : se ingresa el dni y se devuelve la estructura para su posterior
+// manipulacion.
+// PARAMETROS:
+// DEVUELVE : int , cantidad de registros de un archivo.
+//-----------------------------------------------------------------------------
 
 
 #endif // ARCHIVOS_H_INCLUDED
