@@ -89,6 +89,45 @@ bool confirmar(const char* texto = "Esta seguro? (s/n) ")
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
+bool soloLetras(char* cad)
+{
+    for(int x=0; cad[x]!='\0'; x++)
+    {
+        if((cad[x]<'A' || cad[x]>'Z') && (cad[x]<'a' || cad[x]>'z'))
+            return false;
+    }
+    return true;
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void validarNombre(char* cad, unsigned int tam, const char* textoErrorTam, const char* textoErrorLetras)
+{
+    char aux[tam + 2];
+    sys::getline(aux, tam);
+    while(!soloLetras(aux) || strlen(aux)>tam)
+    {
+        if(strlen(aux)>tam)
+            cout << textoErrorTam;
+        else
+            cout << textoErrorLetras;
+        sys::getline(aux, tam);
+    }
+    strcpy(cad, aux);
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 void llenarEspacio(int cant)
 {
     for(int x=0; x<cant; x++)

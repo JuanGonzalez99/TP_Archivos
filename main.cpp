@@ -76,8 +76,8 @@ struct tPrecios
 struct Freelance
 {
     int DNI;
-    char nombre[30];
-    char apellido[30];
+    char nombre[30 + 1];
+    char apellido[30 + 1];
     int horas;
     int tipo;
 };
