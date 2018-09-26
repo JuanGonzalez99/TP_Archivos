@@ -94,7 +94,6 @@ struct Freelance
 int main()
 {
 //    bienvenida();
-    remove(FREELANCES);
     menuPrincipal();
 //    despedida();
     //--------------------------------------------------------------------------

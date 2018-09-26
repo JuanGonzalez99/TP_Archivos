@@ -2,7 +2,7 @@
 // ARCHIVO              : auxiliares.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 22/09/2018.
+// ULTIMA ACTUALIZACION : 26/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -141,11 +141,11 @@ void llenarEspacio(int cant)
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-int strToInt(char* cad)
+long long strToInt(char* cad)
 {
-    int cadenaInt = 0;
+    long long cadenaInt = 0;
     int aux;
-    unsigned int base10 = 1;
+    long long base10 = 1;
 
     for(int x=strlen(cad)-1; x>=0; x--)
     {

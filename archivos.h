@@ -2,7 +2,7 @@
 // ARCHIVO              : archivos.h
 // AUTOR                : Javier Pereyra
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 25/09/2018.
+// ULTIMA ACTUALIZACION : 26/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu).
@@ -147,12 +147,11 @@ void llenarFreelances(Freelance *v)
     if(p==NULL){
         exit(1);
     }
-    Freelance aux;
+
     int i = 0;
 
-    while(fread(&aux,sizeof(Freelance),1,p)==1)
+    while(fread(&v[i],sizeof(Freelance),1,p)==1)
     {
-        v[i] = aux;
         i++;
     }
 
