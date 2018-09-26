@@ -141,6 +141,29 @@ void llenarEspacio(int cant)
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
+int strToInt(char* cad)
+{
+    int cadenaInt = 0;
+    int aux;
+    unsigned int base10 = 1;
+
+    for(int x=strlen(cad)-1; x>=0; x--)
+    {
+        aux = (int)cad[x]-48;
+        cadenaInt += aux*base10;
+        base10 *= 10;
+    }
+
+    return cadenaInt;
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
 bool esEntero(char* cadena)
 {
     for(int x=0; cadena[x]!='\0'; x++)
