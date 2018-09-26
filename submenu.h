@@ -78,6 +78,11 @@ void menuConfigPrecios()
     pedirEnter("\n\n\nEnter ");
 }
 
+Freelance leerFreelance()
+{
+    cout << "";
+}
+
 //=============================================================================
 // FUNCION : tipo nombre(lista de parametros)
 // ACCION : explicar brevemente que es lo que hace la funcion y como.
@@ -172,7 +177,7 @@ void menuCargaDNI()
 {
     sys::cls();
     cout << "#============================================================================#" << endl;
-    cout << "|                               CARGA POR DNI                                |" << endl;
+    cout << "|                               CARGA POR DNI                               l |" << endl;
     cout << "#============================================================================#" << endl;
     pedirEnter("\n\n\nEnter ");
 }
