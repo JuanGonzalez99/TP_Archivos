@@ -96,7 +96,7 @@ void guardarPrecios(tPrecios reg)
 // PARAMETROS: DNI,NOMBRE,APELLIDO,HORAS,TIPO
 // DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
-void guardaFreelances(Freelance reg)
+void guardarFreelance(Freelance reg)
 {
 
     FILE *p;
@@ -156,12 +156,13 @@ void llenarFreelances(Freelance *v)
     if(p==NULL){
         exit(1);
     }
-
+    Freelance aux;
     int i = 0;
 
-    while(fread(&v[i],sizeof(Freelance),1,p)==1)
+    while(fread(&aux,sizeof(Freelance),1,p)==1)
     {
-    i++;
+        v[i] = aux;
+        i++;
     }
 
     fclose(p);
