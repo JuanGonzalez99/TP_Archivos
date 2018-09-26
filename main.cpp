@@ -75,7 +75,7 @@ struct tPrecios
 //Estructura generica para los freelancers
 struct Freelance
 {
-    int DNI;
+    long long DNI;
     char nombre[30 + 1];
     char apellido[30 + 1];
     int horas;
@@ -94,6 +94,7 @@ struct Freelance
 int main()
 {
 //    bienvenida();
+    remove(FREELANCES);
     menuPrincipal();
 //    despedida();
     //--------------------------------------------------------------------------

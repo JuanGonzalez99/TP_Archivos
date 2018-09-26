@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 30/08/2018.
-// ULTIMA ACTUALIZACION : 25/09/2018.
+// ULTIMA ACTUALIZACION : 26/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu) / Windows 10.
@@ -134,17 +134,17 @@ void menuPrecio()
         cout << "|                                                                            |" << endl;
         cout << "|                      1.    Mostrar precio por hora                         |" << endl;
         cout << "|                                                                            |" << endl;
+        cout << "|                                                                            |" << endl;
         cout << "|                      2.  Configurar precio por hora                        |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      3.             Nada                                   |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      4.            Volver                                  |" << endl;
+        cout << "|                      3.            Volver                                  |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "+----------------------------------------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(4);
+        int op = validarOpcion(3);
 
         sys::cls();
         switch(op)
@@ -158,11 +158,6 @@ void menuPrecio()
                 menuConfigPrecios();
             }break;
             case 3:
-            {
-                cout << "Nada" << endl;
-                pedirEnter("Presion enter para volver ");
-            }break;
-            case 4:
             {
                 return;
             }break;
@@ -244,20 +239,19 @@ void menuReportes()
         cout << "|                                  REPORTES                                  |" << endl;
         cout << "#============================================================================#" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      1.      Horas trabajadas por                          |" << endl;
-        cout << "|                                tipo de freelance                           |" << endl;
+        cout << "|                      1.     Horas trabajadas por                           |" << endl;
+        cout << "|                               tipo de freelance                            |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "|                      2.        Reporte general                             |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      3.             Nada                                   |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      4.            Volver                                  |" << endl;
+        cout << "|                      3.            Volver                                  |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "+----------------------------------------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(4);
+        int op = validarOpcion(3);
 
         sys::cls();
         switch(op)
@@ -271,11 +265,6 @@ void menuReportes()
                 reporteGeneral();
             }break;
             case 3:
-            {
-                cout << "Nada" << endl;
-                pedirEnter("Presione enter para volver ");
-            }break;
-            case 4:
             {
                 return;
             }break;
