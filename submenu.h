@@ -20,11 +20,11 @@
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void verificarPrecios()
+// ACCION : valida la existencia del archivo y  en casi de que no sea así
+// automaticamente genera un nuevo archivo preasignado valores.
+// PARAMETROS: ninguno.
+// DEVUELVE : void --> no devuelve ningun valor al ser void
 //-----------------------------------------------------------------------------
 void verificarPrecios()
 {
@@ -39,11 +39,11 @@ void verificarPrecios()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void mostrarPrecios(ninguno)
+// ACCION : verifica precios, genera una estructura p y lee y
+// asigna los valores a esta estructura.
+// PARAMETROS: funcion void, no dispone de parametros.
+// DEVUELVE : void --> no devuelve ningun valor.
 //-----------------------------------------------------------------------------
 void mostrarPrecios()
 {
@@ -63,11 +63,11 @@ void mostrarPrecios()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuConfigPrecios(ninguno)
+// ACCION : Se Ingresan los precios por hora para cada
+// uno de los tipos de Freelance.
+// PARAMETROS: ninguno, funcion void.
+// DEVUELVE : void --> no devuelve ningun valor al ser funcion void.
 //-----------------------------------------------------------------------------
 void menuConfigPrecios()
 {
@@ -80,11 +80,11 @@ void menuConfigPrecios()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : Freelance leerFreelance(ninguno)
+// ACCION : Captura y devuelve un nuevo freelance
+// PARAMETROS: ninguno.
+// DEVUELVE : Freelance, nuevo --> devuelve una estructura freelance para luego
+// ser resguardada.
 //-----------------------------------------------------------------------------
 Freelance leerFreelance()
 {
@@ -102,11 +102,11 @@ Freelance leerFreelance()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void mostrarFreelance(f)
+// ACCION : muestra los datos de los freelance.
+// PARAMETROS:Freelance, f, representa la estructura freelance la cual luego se
+// utiliza para mostrar la informacion de la misma.
+// DEVUELVE : void --> nada, debido a que es una funcion void.
 //-----------------------------------------------------------------------------
 void mostrarFreelance(Freelance f)
 {
@@ -119,11 +119,11 @@ void mostrarFreelance(Freelance f)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void verificarFreelances(nada)
+// ACCION : valida si el archivo freelance existe y de no ser asi automaticamente
+// asigna valores pre-definidos para este Trabajo Practico.
+// PARAMETROS: ninguno, es una funcion de tipo void.
+// DEVUELVE : void -->ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void verificarFreelances()
 {
@@ -145,11 +145,11 @@ void verificarFreelances()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuAgregar(nada)
+// ACCION : verifica los frealances, y luego ingresa nuevos
+// validando que los mismos ya no existan actualmente en el archivo.
+// PARAMETROS: ninguno, es una funcion de tipo void.
+// DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuAgregar()
 {
@@ -175,17 +175,16 @@ void menuAgregar()
     else
     {
         cout << "Ha ocurrido un error, intente nuevamente o pongase en contacto" << endl;
-        cout << "con su proveedor de internet" << endl;
+        cout << "con el soporte de la aplicacion" << endl;
     }
     pedirEnter("\n\n(Presione enter para volver) ");
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuBusqueda(nada)
+// ACCION : busca al freelance por DNI.
+// PARAMETROS: ninguno, es una funcion de tipo void.
+// DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuBusqueda()
 {
@@ -194,7 +193,7 @@ void menuBusqueda()
 
     sys::cls();
     cout << "#==============================================================================#" << endl;
-    cout << "|                           BUSQUEDA DE FREELANCES                             |" << endl;
+    cout << "|                           BUSQUEDA DE FREELANCES  por (DNI)                  |" << endl;
     cout << "#==============================================================================#" << endl;
     cout << endl;
     cout << "Ingrese el DNI a buscar: ";
@@ -230,11 +229,10 @@ void menuCargaGral()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuCargaDNI(nada)
+// ACCION : carga al freelance por DNI.
+// PARAMETROS: ninguno, es una funcion de tipo void.
+// DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuCargaDNI()
 {
@@ -258,11 +256,10 @@ void menuCargaDNI()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void reportePorTipo(void)
+// ACCION : Reporte de Freelance por tipo.
+// PARAMETROS: ninguno, es una funcion de tipo void.
+// DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void reportePorTipo()
 {
@@ -276,11 +273,10 @@ void reportePorTipo()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void reporteGeneral(ninguno)
+// ACCION : muestra un reporte general de cada Freelancer.
+// PARAMETROS: ninguno, es una funcion de tipo void.
+// DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void reporteGeneral()
 {
