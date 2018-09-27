@@ -23,7 +23,7 @@
 #include "CSYSTEM/csystem.h" // Libreria para multiplataforma.
 #include "archivos.h" // Libreria con funciones de archivos
 #include "auxiliares.h" // Libreria auxiliar
-#include "submenu.h"
+#include "submenu.h" // Libreria auxiliar
 
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
