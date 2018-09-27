@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 22/09/2018.
-// ULTIMA ACTUALIZACION : 27/09/2018.
+// ULTIMA ACTUALIZACION : 26/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -288,7 +288,7 @@ void reporteGeneral()
 {
     verificarFreelances();
 
-    Freelance *registros = (Freelance*)malloc(cantRegistros(FREELANCES)*sizeof(Freelance));
+    Freelance *registros = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
     if(registros == NULL) exit(2);
 
     llenarFreelances(registros);
@@ -298,7 +298,7 @@ void reporteGeneral()
     cout << "|                              REPORTE GENERAL                               |" << endl;
     cout << "#============================================================================#" << endl;
     cout << endl;
-    for(int x=0; x<cantRegistros(FREELANCES); x++)
+    for(int x=0; x<cantRegistros(); x++)
     {
         mostrarFreelance(registros[x]);
         pedirEnter();
