@@ -23,8 +23,8 @@
 // FUNCION : void verificarPrecios()
 // ACCION : valida la existencia del archivo y  en casi de que no sea así
 // automaticamente genera un nuevo archivo preasignado valores.
-// PARAMETROS: ninguno.
-// DEVUELVE : void --> no devuelve ningun valor al ser void
+// PARAMETROS: -.
+// DEVUELVE : void --> no devuelve ningun valor al ser void.
 //-----------------------------------------------------------------------------
 void verificarPrecios()
 {
@@ -39,10 +39,10 @@ void verificarPrecios()
 }
 
 //=============================================================================
-// FUNCION : void mostrarPrecios(ninguno)
+// FUNCION : void mostrarPrecios()
 // ACCION : verifica precios, genera una estructura p y lee y
 // asigna los valores a esta estructura.
-// PARAMETROS: funcion void, no dispone de parametros.
+// PARAMETROS: -.
 // DEVUELVE : void --> no devuelve ningun valor.
 //-----------------------------------------------------------------------------
 void mostrarPrecios()
@@ -66,7 +66,7 @@ void mostrarPrecios()
 // FUNCION : void menuConfigPrecios(ninguno)
 // ACCION : Se Ingresan los precios por hora para cada
 // uno de los tipos de Freelance.
-// PARAMETROS: ninguno, funcion void.
+// PARAMETROS: -.
 // DEVUELVE : void --> no devuelve ningun valor al ser funcion void.
 //-----------------------------------------------------------------------------
 void menuConfigPrecios()
@@ -80,9 +80,9 @@ void menuConfigPrecios()
 }
 
 //=============================================================================
-// FUNCION : Freelance leerFreelance(ninguno)
+// FUNCION : Freelance leerFreelance()
 // ACCION : Captura y devuelve un nuevo freelance
-// PARAMETROS: ninguno.
+// PARAMETROS: -.
 // DEVUELVE : Freelance, nuevo --> devuelve una estructura freelance para luego
 // ser resguardada.
 //-----------------------------------------------------------------------------
@@ -102,10 +102,10 @@ Freelance leerFreelance()
 }
 
 //=============================================================================
-// FUNCION : void mostrarFreelance(f)
+// FUNCION : void mostrarFreelance(Freelance f)
 // ACCION : muestra los datos de los freelance.
-// PARAMETROS:Freelance, f, representa la estructura freelance la cual luego se
-// utiliza para mostrar la informacion de la misma.
+// PARAMETROS: Freelance f -> representa la estructura freelance la cual luego
+//             se utiliza para mostrar la informacion de la misma.
 // DEVUELVE : void --> nada, debido a que es una funcion void.
 //-----------------------------------------------------------------------------
 void mostrarFreelance(Freelance f)
@@ -119,11 +119,11 @@ void mostrarFreelance(Freelance f)
 }
 
 //=============================================================================
-// FUNCION : void verificarFreelances(nada)
+// FUNCION : void verificarFreelances()
 // ACCION : valida si el archivo freelance existe y de no ser asi automaticamente
 // asigna valores pre-definidos para este Trabajo Practico.
-// PARAMETROS: ninguno, es una funcion de tipo void.
-// DEVUELVE : void -->ninguno, es una funcion de tipo void.
+// PARAMETROS: -.
+// DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void verificarFreelances()
 {
@@ -145,22 +145,23 @@ void verificarFreelances()
 }
 
 //=============================================================================
-// FUNCION : void menuAgregar(nada)
+// FUNCION : void menuAgregar()
 // ACCION : verifica los frealances, y luego ingresa nuevos
 // validando que los mismos ya no existan actualmente en el archivo.
-// PARAMETROS: ninguno, es una funcion de tipo void.
+// PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuAgregar()
 {
-    verificarFreelances();
-
     sys::cls();
     cout << "#============================================================================#" << endl;
     cout << "|                              AGREGAR FREELANCE                             |" << endl;
     cout << "#============================================================================#" << endl;
     cout << endl;
     Freelance nuevo = leerFreelance();
+
+    verificarFreelances();
+
     if(existeFreelance(nuevo.DNI))
     {
         cout << "DNI ya existente" << endl;
@@ -181,14 +182,13 @@ void menuAgregar()
 }
 
 //=============================================================================
-// FUNCION : void menuBusqueda(nada)
+// FUNCION : void menuBusqueda()
 // ACCION : busca al freelance por DNI.
-// PARAMETROS: ninguno, es una funcion de tipo void.
+// PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuBusqueda()
 {
-//    verificarFreelances();
     int dni;
 
     sys::cls();
@@ -199,6 +199,9 @@ void menuBusqueda()
     cout << "Ingrese el DNI a buscar: ";
     cin >> dni; cin.ignore();
     cout << endl;
+
+    verificarFreelances();
+
     if(!existeFreelance(dni))
     {
         cout << "Freelance inexistente" << endl;
@@ -207,8 +210,6 @@ void menuBusqueda()
     }
     mostrarFreelance(buscarFreelanceDNI(dni));
     pedirEnter("\n\n(Presione enter para volver) ");
-    return;
-
 }
 
 //=============================================================================
@@ -229,9 +230,9 @@ void menuCargaGral()
 }
 
 //=============================================================================
-// FUNCION : void menuCargaDNI(nada)
+// FUNCION : void menuCargaDNInada)
 // ACCION : carga al freelance por DNI.
-// PARAMETROS: ninguno, es una funcion de tipo void.
+// PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuCargaDNI()
@@ -244,6 +245,9 @@ void menuCargaDNI()
     cout << endl;
     cout << "Ingrese el DNI: ";
     cin >> dni; cin.ignore();
+
+    verificarFreelances();
+
     if(!existeFreelance(dni))
     {
         cout << "Freelance inexistente" << endl;
@@ -256,13 +260,15 @@ void menuCargaDNI()
 }
 
 //=============================================================================
-// FUNCION : void reportePorTipo(void)
+// FUNCION : void reportePorTipo()
 // ACCION : Reporte de Freelance por tipo.
-// PARAMETROS: ninguno, es una funcion de tipo void.
+// PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void reportePorTipo()
 {
+    verificarFreelances();
+
     sys::cls();
     cout << "#============================================================================#" << endl;
     cout << "|                        REPORTE POR TIPO DE FREELANCE                       |" << endl;
@@ -273,9 +279,9 @@ void reportePorTipo()
 }
 
 //=============================================================================
-// FUNCION : void reporteGeneral(ninguno)
+// FUNCION : void reporteGeneral()
 // ACCION : muestra un reporte general de cada Freelancer.
-// PARAMETROS: ninguno, es una funcion de tipo void.
+// PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void reporteGeneral()
@@ -294,7 +300,7 @@ void reporteGeneral()
     cout << endl;
     for(int x=0; x<cantRegistros(FREELANCES); x++)
     {
-        mostrarFreelance(registros[x]); // Algo raro pasa aca
+        mostrarFreelance(registros[x]);
         pedirEnter();
     }
 }
