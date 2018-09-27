@@ -2,7 +2,7 @@
 // ARCHIVO              : archivos.h
 // AUTOR                : Javier Pereyra
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 26/09/2018.
+// ULTIMA ACTUALIZACION : 27/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Linux (Ubuntu).

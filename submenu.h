@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 22/09/2018.
-// ULTIMA ACTUALIZACION : 26/09/2018.
+// ULTIMA ACTUALIZACION : 27/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -43,7 +43,7 @@ void verificarPrecios()
 // ACCION : verifica precios, genera una estructura p y lee y
 // asigna los valores a esta estructura.
 // PARAMETROS: -.
-// DEVUELVE : void --> no devuelve ningun valor.
+// DEVUELVE : nada --> no devuelve ningun valor.
 //-----------------------------------------------------------------------------
 void mostrarPrecios()
 {
@@ -67,7 +67,7 @@ void mostrarPrecios()
 // ACCION : Se Ingresan los precios por hora para cada
 // uno de los tipos de Freelance.
 // PARAMETROS: -.
-// DEVUELVE : void --> no devuelve ningun valor al ser funcion void.
+// DEVUELVE : nada --> no devuelve ningun valor al ser funcion void.
 //-----------------------------------------------------------------------------
 void menuConfigPrecios()
 {

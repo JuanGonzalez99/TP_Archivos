@@ -2,7 +2,7 @@
 // ARCHIVO              : auxiliares.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 26/09/2018.
+// ULTIMA ACTUALIZACION : 27/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -26,10 +26,9 @@
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
+// FUNCION : void pedirEnter(txt = "")
+// ACCION : recive una cadena
+// PARAMETROS: const char, txt = "",
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
 void pedirEnter(const char* txt = "")
@@ -40,11 +39,11 @@ void pedirEnter(const char* txt = "")
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : int validarOpcion(max)
+// ACCION : validas el ingreso  de numeros.
+// PARAMETROS: int, max. valida el valor entero ingresado.
+// DEVUELVE : int --> devuelve un valor del resultado de una
+// operacion matematica de resta.
 //-----------------------------------------------------------------------------
 int validarOpcion(int _max)
 {
@@ -65,11 +64,11 @@ int validarOpcion(int _max)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : bool confirmar(texto)
+// ACCION : devuelve un valor booleando dependiendo de la opcion a tomar.
+// PARAMETROS: const char*, text = "Esta seguro? (s/n", valida si la opcion
+// que se ingresa es por un si o no.
+// DEVUELVE : bool --> confirma si es verdadero o no.
 //-----------------------------------------------------------------------------
 bool confirmar(const char* texto = "Esta seguro? (s/n) ")
 {
@@ -83,11 +82,10 @@ bool confirmar(const char* texto = "Esta seguro? (s/n) ")
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : bool soloLetras(*cad)
+// ACCION : valida si el ingreso de la cadena es de solo letras de la a(A) a la z(Z)
+// PARAMETROS: char*, cad, ingreso de cadena para validar si son todas letras.
+// DEVUELVE : bool --> representa si la cadena esta armada totalmetne por caracteres.
 //-----------------------------------------------------------------------------
 bool soloLetras(char* cad)
 {
@@ -100,11 +98,12 @@ bool soloLetras(char* cad)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// FUNCION : void validarNombre(cad,tam,textoErrorTam,textoErrorLetras)
+// ACCION : Ingresa una cadena, el tamaño de la misma, tambien un texto explicativo
+// en caso de error y ademas un error por si se ingresan letras incorrectas.
 // PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
 // que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// DEVUELVE : void --> esta funcion no devuelve nada, ya que es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void validarNombre(char* cad, unsigned int tam, const char* textoErrorTam, const char* textoErrorLetras)
 {
@@ -122,11 +121,11 @@ void validarNombre(char* cad, unsigned int tam, const char* textoErrorTam, const
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void llenarEspacio(cant)
+// ACCION : Ingresa una cantidad de espacios las cuales luego las completa con una
+// salida vacia.
+// PARAMETROS: int, cant, cantidad de espacios.
+// DEVUELVE : void --> no devuelve ningun tipo de valor.
 //-----------------------------------------------------------------------------
 void llenarEspacio(int cant)
 {
@@ -135,11 +134,10 @@ void llenarEspacio(int cant)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : long long strToInt(cad)
+// ACCION : Transforma caracteres numericos en caracteres long
+// PARAMETROS:char*, cad, cadena que luego es transformada.
+// DEVUELVE : long long --> devuelve la cadena como enteros.
 //-----------------------------------------------------------------------------
 long long strToInt(char* cad)
 {
@@ -158,11 +156,11 @@ long long strToInt(char* cad)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : bool esEntero(cadena)
+// ACCION : valida si el ingreso de la cadena dispone de numeros enteros.
+// PARAMETROS: char*, cadena, recorre y valida que la misma disponga
+// de valores menores a 0 y 9
+// DEVUELVE : bool --> valida si la cadena ingresa tiene caracteres numeros.
 //-----------------------------------------------------------------------------
 bool esEntero(char* cadena)
 {
@@ -175,11 +173,11 @@ bool esEntero(char* cadena)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void toUpper(cadena)
+// ACCION : transforma la cadena en Mayuscula.
+// PARAMETROS: char*, cadena, recorre la cadena y hace una operacion matematica
+// para transformarla en mayuscula.
+// DEVUELVE : void --> no devuelve ningun valor.
 //-----------------------------------------------------------------------------
 void toUpper(char* cadena)
 {
@@ -236,7 +234,7 @@ bool strSub(char* cad, char* subc)
 }
 
 //=============================================================================
-// FUNCION : primercaracterUpper(*cad)
+// FUNCION : firstUpper(*cad)
 // ACCION : Transformar el primero caracter de la cadena en mayuscula
 // PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
 // que representa, y valores posibles si existieran limitaciones).
@@ -255,7 +253,7 @@ void firstUpper(char *cad)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
+// FUNCION : int intlen(lista de parametros)
 // ACCION : explicar brevemente que es lo que hace la funcion y como.
 // PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
 // que representa, y valores posibles si existieran limitaciones).
