@@ -26,11 +26,12 @@
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : booleano existeArchivo(constante de tipo char)
+// ACCION : abre el archivo en modo lectura, valida si
+// tiene contenido NULO devolviendo falso
+// si es así o verdadero si así no es.
+// PARAMETROS: char, *URL, representa el puntero al archivo.
+// DEVUELVE : bool --> representa la existencia del archivo
 //-----------------------------------------------------------------------------
 bool existeArchivo(const char *URL)
 {
@@ -49,7 +50,7 @@ bool existeArchivo(const char *URL)
 // FUNCION : leerPrecioh()
 // ACCION : Abre el archivo, procede a leerlo y devolver una estructura auxiliar
 // DEVUELVE : tPrecios / Devuelve la estructura auxiliar para luego ser usada por
-// otras subfunciones.
+// otras subfunciones relacionadas con el submenu y menu.
 //-----------------------------------------------------------------------------
 tPrecios leerPrecios()
 {
@@ -71,8 +72,9 @@ tPrecios leerPrecios()
 
 //=============================================================================
 // FUNCION : guardarPrecios(tPrecios reg)
-// ACCION : resguarda el precio de los freelancers.
-// PARAMETROS: reg: tPrecio.
+// ACCION : resguarda el precio de los freelancers por unica vez
+// PARAMETROS: tPrecios, reg, representa el ingreso de
+// una estructura de tipo tPrecios
 // DEVUELVE : no devuelve nada al ser una funcion void.
 //-----------------------------------------------------------------------------
 void guardarPrecios(tPrecios reg)
@@ -91,9 +93,10 @@ void guardarPrecios(tPrecios reg)
 }
 
 //=============================================================================
-// FUNCION : guardaFreelancers(reg,DNI,*NOMBRE,*)
+// FUNCION : guardaFreelancers(reg)
 // ACCION : Se ingresa tanto la estructura , tanto así como el resguardo de sus variables.
-// PARAMETROS: DNI,NOMBRE,APELLIDO,HORAS,TIPO
+// PARAMETROS: Freelance, reg, la misma se utiliza para el ingreso de una estructura
+// de tipo Freelance para el resguardo de estos datos en el archivo.
 // DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
 void guardarFreelance(Freelance reg)
@@ -114,9 +117,9 @@ void guardarFreelance(Freelance reg)
 
 //=============================================================================
 // FUNCION : cantRegistros(*URL)
-// ACCION : Se ingresa la estructura para luego cargar la misma.
-// PARAMETROS: *v
-// DEVUELVE : Nada, es una funcion void.
+// ACCION : se dispone a leer la cantidad de registros.
+// PARAMETROS: const char, *URL.
+// DEVUELVE : la cantidad de bytes dividido la estructura Freelance
 //-----------------------------------------------------------------------------
 long cantRegistros(const char *URL)
 {
@@ -134,8 +137,11 @@ long cantRegistros(const char *URL)
 
 //=============================================================================
 // FUNCION : llenarFreelances(*v)
-// ACCION : Se ingresa la estructura para luego cargar la misma.
-// PARAMETROS: *v
+// ACCION : Se ingresa la estructura como un puntero para luego ser posible
+// para el procesamiento de un vector de estructuras y asi realizar
+// la copia binaria de los datos de la estructura
+// haciendo referencia al vector sub indice.
+// PARAMETROS: Freelance, *v, permite el ingreso de un vector de estructuras.
 // DEVUELVE : Nada, es una funcion void.
 //-----------------------------------------------------------------------------
 void llenarFreelances(Freelance *v)
@@ -161,9 +167,10 @@ void llenarFreelances(Freelance *v)
 }
 
 //=============================================================================
-// FUNCION : existeFreelancedni
-// ACCION : Se ingresa el dni y devuelve un valor booleano.
-// PARAMETROS: dni
+// FUNCION : existeFreelance(dni)
+// ACCION : Se ingresa el dni para luego leer el
+// archivo y validar la existencia del Freelance.
+// PARAMETROS: int , dni, Se ingresa el dni para luego hacer la busqueda.
 // DEVUELVE : bool ( el mismo se usa para validar si existe o no el freelance ).
 //-----------------------------------------------------------------------------
 bool existeFreelance(int dni)
@@ -194,10 +201,11 @@ bool existeFreelance(int dni)
 }
 
 //=============================================================================
-// FUNCION : buscarFreelance
+// FUNCION : buscarFreelanceDNI(dni)
 // ACCION : se ingresa el dni y se devuelve la estructura para su posterior
 // manipulacion.
-// PARAMETROS: dni
+// PARAMETROS: int, dni, se valida la existencia del freelance
+//  y se devuelve la estructura del mismo
 // DEVUELVE : Freelance , estructura de datos.
 //-----------------------------------------------------------------------------
 Freelance buscarFreelanceDNI(int dni)
@@ -224,15 +232,6 @@ Freelance buscarFreelanceDNI(int dni)
 return auxiliar;
 
 }
-
-//=============================================================================
-// FUNCION : contarReg
-// ACCION : se ingresa el dni y se devuelve la estructura para su posterior
-// manipulacion.
-// PARAMETROS:
-// DEVUELVE : int , cantidad de registros de un archivo.
-//-----------------------------------------------------------------------------
-
 
 #endif // ARCHIVOS_H_INCLUDED
 
