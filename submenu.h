@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 22/09/2018.
-// ULTIMA ACTUALIZACION : 26/09/2018.
+// ULTIMA ACTUALIZACION : 28/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -53,7 +53,7 @@ void mostrarPrecios()
     cout << "#============================================================================#" << endl;
     cout << "|                   PRECIO POR HORA SEGUN TIPO DE FREELANCE                  |" << endl;
     cout << "#============================================================================#" << endl;
-    cout << "|          Tipo de freelance          |                 $$$                  |" << endl;
+    cout << "|          Tipo de freelance          |              Valor hora              |" << endl;
     cout << "+----------------------------------------------------------------------------+" << endl;
     cout << "|             Diseñadores             |  $" << p.diseniadores; llenarEspacio(35-intlen(p.diseniadores)); cout << "|" << endl;
     cout << "|           Desarrolladores           |  $" << p.desarrolladores; llenarEspacio(35-intlen(p.desarrolladores)); cout << "|" << endl;
@@ -239,26 +239,34 @@ void menuAgregar()
 //-----------------------------------------------------------------------------
 void menuBusqueda()
 {
-    int dni;
-
     sys::cls();
     cout << "#==============================================================================#" << endl;
-    cout << "|                           BUSQUEDA DE FREELANCES  por (DNI)                  |" << endl;
+    cout << "|                           BUSQUEDA DE FREELANCES                             |" << endl;
     cout << "#==============================================================================#" << endl;
-    cout << endl;
-    cout << "Ingrese el DNI a buscar: ";
-    cin >> dni; cin.ignore();
-    cout << endl;
+
 
     verificarFreelances();
-
-    if(!existeFreelance(dni))
+    Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
+    if(freelances == NULL)
     {
-        cout << "Freelance inexistente" << endl;
-        pedirEnter("Enter ");
+        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+        pedirEnter("\nPresione enter para volver ");
         return;
     }
-    mostrarFreelance(buscarFreelanceDNI(dni));
+//    cout << endl;
+//    cout << "Ingrese el DNI a buscar: ";
+//    cin >> dni; cin.ignore();
+//    cout << endl;
+//
+//    verificarFreelances();
+//
+//    if(!existeFreelance(dni))
+//    {
+//        cout << "Freelance inexistente" << endl;
+//        pedirEnter("Enter ");
+//        return;
+//    }
+//    mostrarFreelance(buscarFreelanceDNI(dni));
     pedirEnter("\n\n(Presione enter para volver) ");
 }
 
@@ -274,10 +282,9 @@ void menuModificarFreelance()
     int dni;
     sys::cls();
     cout << "#============================================================================#" << endl;
-    cout << "|                       MODIFICAR FREELANCE POR DNI                          |" << endl;
+    cout << "|                       MODIFICAR DATOS DE FREELANCE                         |" << endl;
     cout << "#============================================================================#" << endl;
     cout << endl;
-        cout << endl;
     cout << "Ingrese el DNI a buscar: ";
     cin >> dni; cin.ignore();
     cout << endl;
@@ -296,33 +303,53 @@ void menuModificarFreelance()
 }
 
 //=============================================================================
-// FUNCION : void menuCargaDNInada)
+// FUNCION : void menuCargaDNI()
 // ACCION : carga al freelance por DNI.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void menuCargaDNI()
 {
-    int dni;
     sys::cls();
     cout << "#============================================================================#" << endl;
     cout << "|                               CARGA POR DNI                                |" << endl;
     cout << "#============================================================================#" << endl;
     cout << endl;
     cout << "Ingrese el DNI: ";
-    cin >> dni; cin.ignore();
+
+    long long DNI = validarDNI();
 
     verificarFreelances();
 
-    if(!existeFreelance(dni))
+    if(!existeFreelance(DNI))
     {
         cout << "Freelance inexistente" << endl;
         pedirEnter("\nPresione enter para volver ");
         return;
     }
-    Freelance buscado = buscarFreelanceDNI(dni);
+
+    Freelance buscado = buscarFreelanceDNI(DNI);
     mostrarFreelance(buscado);
-    pedirEnter("\n\nPresione enter para volver ");
+
+    cout << "Ingrese las horas trabajadas: ";
+
+    int horas = validarHoras();
+
+    verificarFreelances();
+
+    buscado.horas = horas;
+//    modificarFreelance(buscado);
+    cout << endl;
+    if(buscarFreelanceDNI(buscado.DNI).horas == horas)
+    {
+        cout << "Horas cargadas correctamente" << endl;
+    }
+    else
+    {
+        cout << "Ha ocurrido un error, intente nuevamente o pongase en contacto" << endl;
+        cout << "con el soporte de la aplicacion" << endl;
+    }
+    pedirEnter("\n(Presione enter para volver) ");
 }
 
 //=============================================================================
@@ -334,31 +361,85 @@ void menuCargaDNI()
 //-----------------------------------------------------------------------------
 void menuCargaGral()
 {
+    verificarFreelances();
+    Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
+    if(freelances == NULL)
+    {
+        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+        pedirEnter("\nPresione enter para volver ");
+        return;
+    }
+
+    for(int x=0; x<cantRegistros(); x++)
+    {
+        int horas;
+        sys::cls();
+        cout << "#============================================================================#" << endl;
+        cout << "|                               CARGA GENERAL                                |" << endl;
+        cout << "#============================================================================#" << endl;
+        cout << endl;
+        mostrarFreelance(freelances[x]);
+        cout << "Ingrese las horas trabajadas: ";
+        cin >> horas; cin.ignore();
+//        modificarFreelance(freelances[x]);
+
+    }
     sys::cls();
-    cout << "#============================================================================#" << endl;
-    cout << "|                               CARGA GENERAL                                |" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << endl;
-    pedirEnter("\n\n\nEnter ");
+    free(freelances);
+    pedirEnter("Presione enter para volver ");
 }
 
 //=============================================================================
 // FUNCION : void reportePorTipo()
-// ACCION : Reporte de Freelance por tipo.
+// ACCION : Reporte de horas trabajadas por tipo de freelance con sus totales.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void reportePorTipo()
 {
     verificarFreelances();
+    Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
+    if(freelances == NULL)
+    {
+        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+        pedirEnter("\nPresione enter para volver ");
+        return;
+    }
+    llenarFreelances(freelances);
+
+    verificarPrecios();
+    tPrecios p = leerPrecios();
+
+    int horasDis=0, horasDes=0, horasAn=0;
+
+    for(int x=0; x<cantRegistros(); x++)
+    {
+        switch(freelances[x].tipo)
+        {
+        case DISENIADOR: horasDis += freelances[x].horas; break;
+        case DESARROLLADOR: horasDes += freelances[x].horas; break;
+        case ANALISTA: horasAn += freelances[x].horas; break;
+        }
+    }
+
+    free(freelances);
+
+    int sueldoDis=horasDis*p.diseniadores, sueldoDes=horasDes*p.desarrolladores, sueldoAn=horasAn*p.analistas;
+    int totHoras=horasAn+horasDes+horasDis, totSueldo=sueldoAn+sueldoDes+sueldoDis;
 
     sys::cls();
     cout << "#============================================================================#" << endl;
     cout << "|                        REPORTE POR TIPO DE FREELANCE                       |" << endl;
     cout << "#============================================================================#" << endl;
-    cout << endl;
-    pedirEnter("\n\n\nEnter ");
-
+    cout << "|          Tipo           |    Horas trabajadas    |      Sueldo a pagar     |" << endl;
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    cout << "|    Diseñadores          |";llenarEspacio(24-intlen(horasDis));cout<<horasDis<<"|";llenarEspacio(24-intlen(sueldoDis));cout<<"$"<<sueldoDis<<"|"<<endl;
+    cout << "|    Desarrolladores      |";llenarEspacio(24-intlen(horasDes));cout<<horasDes<<"|";llenarEspacio(24-intlen(sueldoDes));cout<<"$"<<sueldoDes<<"|"<<endl;
+    cout << "|    Analistas            |";llenarEspacio(24-intlen(horasAn)); cout<<horasAn<<"|";llenarEspacio(24-intlen(sueldoAn)); cout<<"$"<<sueldoAn <<"|"<<endl;
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    cout << "|         TOTALES         |";llenarEspacio(24-intlen(totHoras));cout<<totHoras<<"|";llenarEspacio(24-intlen(totSueldo));cout<<"$"<<totSueldo<<"|"<<endl;
+    cout << "------------------------------------------------------------------------------" << endl;
+    pedirEnter("\n\nPresione enter para volver ");
 }
 
 //=============================================================================
@@ -372,7 +453,12 @@ void reporteGeneral()
     verificarFreelances();
 
     Freelance *registros = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
-    if(registros == NULL) exit(2);
+    if(registros == NULL)
+    {
+        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+        pedirEnter("\nPresione enter para volver ");
+        return;
+    }
 
     llenarFreelances(registros);
 
@@ -380,12 +466,9 @@ void reporteGeneral()
     cout << "#============================================================================#" << endl;
     cout << "|                              REPORTE GENERAL                               |" << endl;
     cout << "#============================================================================#" << endl;
-    cout << endl;
-    for(int x=0; x<cantRegistros(); x++)
-    {
-        mostrarFreelance(registros[x]);
-        pedirEnter();
-    }
+
+
+    free(registros);
 }
 
 #endif // SUBMENU_H_INCLUDED

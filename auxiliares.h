@@ -2,7 +2,7 @@
 // ARCHIVO              : auxiliares.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 01/09/2018.
-// ULTIMA ACTUALIZACION : 27/09/2018.
+// ULTIMA ACTUALIZACION : 28/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -202,6 +202,50 @@ bool esEntero(char* cadena)
             return false;
     }
     return true;
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+long long validarDNI()
+{
+    char dni[12];
+    sys::getline(dni, 12);
+    while(!esEntero(dni) || strlen(dni)<1 || strlen(dni)>10)
+    {
+        if(!esEntero(dni))
+            cout << "Por favor, ingrese solo numeros: ";
+        else if(strlen(dni)>10)
+            cout << "Ingrese un DNI de no mas de 10 cifras: ";
+        sys::getline(dni, 12);
+    }
+    return strToInt(dni);
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+int validarHoras()
+{
+    char hs[4];
+    sys::getline(hs, 4);
+    while(!esEntero(hs) || strlen(hs)<1 || strToInt(hs)>250)
+    {
+        if(!esEntero(hs))
+            cout << "Ingrese solo numeros: ";
+        else if(strToInt(hs)>250)
+            cout << "No se acepta un ingreso mayor a 250, intente nuevamente: ";
+        sys::getline(hs, 4);
+    }
+    return strToInt(hs);
 }
 
 //=============================================================================
