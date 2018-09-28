@@ -71,12 +71,62 @@ void mostrarPrecios()
 //-----------------------------------------------------------------------------
 void menuConfigPrecios()
 {
-    sys::cls();
-    cout << "#============================================================================#" << endl;
-    cout << "|                    CONFIGURACION DE LOS PRECIOS POR HORA                   |" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << endl;
-    pedirEnter("\n\n\nEnter ");
+    bool volver = false;
+
+    while(!volver)
+    {
+        verificarPrecios();
+        tPrecios p = leerPrecios();
+
+        sys::cls();
+        cout << "#============================================================================#" << endl;
+        cout << "|                    CONFIGURACION DE LOS PRECIOS POR HORA                   |" << endl;
+        cout << "#============================================================================#" << endl;
+        cout << endl;
+        cout << "Diseñadores (1): $" << p.diseniadores << endl;
+        cout << "Desarrolladores (2): $" << p.desarrolladores << endl;
+        cout << "Analistas (3): $" << p.analistas << endl;
+        cout << endl;
+        cout << "Ingrese un tipo de freelance o 'S' para salir: ";
+
+        char op = validarOpcion("123Ss");
+
+        switch(op)
+        {
+            case '1':
+            {
+                int n;
+                cout << "Ingrese el nuevo precio por hora: ";
+                cin >> n; cin.ignore();
+                if(n < 100) cout << "Rata";
+                p.diseniadores = n;
+            }break;
+            case '2':
+            {
+                int n;
+                cout << "Ingrese el nuevo precio por hora: ";
+                cin >> n; cin.ignore();
+                if(n < 100) cout << "Rata";
+                p.desarrolladores = n;
+            }break;
+            case '3':
+            {
+                int n;
+                cout << "Ingrese el nuevo precio por hora: ";
+                cin >> n; cin.ignore();
+                if(n < 100) cout << "Rata";
+                p.analistas = n;
+            }break;
+            case 'S':
+            case 's':
+            {
+                return;
+            }
+        }//Fin switch
+
+        guardarPrecios(p);
+
+    }//Fin while
 }
 
 //=============================================================================
@@ -84,7 +134,7 @@ void menuConfigPrecios()
 // ACCION : Captura y devuelve un nuevo freelance
 // PARAMETROS: -.
 // DEVUELVE : Freelance, nuevo --> devuelve una estructura freelance para luego
-// ser resguardada.
+//            ser resguardada.
 //-----------------------------------------------------------------------------
 Freelance leerFreelance()
 {
@@ -219,23 +269,6 @@ void menuBusqueda()
 // que representa, y valores posibles si existieran limitaciones).
 // DEVUELVE : tipo --> explicacion si representa algo.
 //-----------------------------------------------------------------------------
-void menuCargaGral()
-{
-    sys::cls();
-    cout << "#============================================================================#" << endl;
-    cout << "|                               CARGA GENERAL                                |" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << endl;
-    pedirEnter("\n\n\nEnter ");
-}
-
-//=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
-//-----------------------------------------------------------------------------
 void menuModificarFreelance()
 {
     int dni;
@@ -290,6 +323,23 @@ void menuCargaDNI()
     Freelance buscado = buscarFreelanceDNI(dni);
     mostrarFreelance(buscado);
     pedirEnter("\n\nPresione enter para volver ");
+}
+
+//=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void menuCargaGral()
+{
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                               CARGA GENERAL                                |" << endl;
+    cout << "#============================================================================#" << endl;
+    cout << endl;
+    pedirEnter("\n\n\nEnter ");
 }
 
 //=============================================================================
