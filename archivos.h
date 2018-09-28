@@ -236,6 +236,67 @@ Freelance buscarFreelanceDNI(int dni)
 
 }
 
+//=============================================================================
+// FUNCION : Freelance modificarFreelance(int dni)
+// ACCION : se ingresa el dni y se modifican los datos del freelance
+// PARAMETROS: int dni -> se valida la existencia del freelance y se devuelve
+//             la estructura del mismo.
+// DEVUELVE : void --> ningun dato, ya que se proceden a modificar registros
+//-----------------------------------------------------------------------------
+int modificarFreelance(int dni)
+{
+
+//Set de variables, para modificar valores de Freelance
+    char nombre[30];
+    char apellido[30];
+
+    FILE *p;
+    Freelance reg;
+    p = fopen(FREELANCES,"rb+");
+    if(p==NULL)
+    {
+        exit(1);
+    }
+
+    while(fread(&reg,sizeof reg,1,p)==1)
+    {
+        if(dni == reg.DNI)
+        {
+            cout<<"Ingrese el nuevo nombre:"<<endl;
+            sys::getline(nombre,30);
+            strcpy(reg.nombre,nombre);
+            cout<<"Ingrese el nuevo apellido:"<<endl;
+            sys::getline(apellido,30);
+            strcpy(reg.apellido,apellido);
+            cout<<"Ingrese la nueva cantidad de horas:"<<endl;
+            cin>>reg.horas;
+            cout<<"Ingrese el nuevo tipo de freelance:"<<endl;
+            cin>>reg.tipo;
+
+
+            fseek(p, ftell(p)-sizeof reg, 0);
+            fwrite(&reg, sizeof(Freelance), 1, p);
+            fclose(p);
+            return 1;
+        }
+    }
+
+    fclose(p);
+    return 0;
+
+}
+
+//=============================================================================
+// FUNCION : Freelance modificarFreelance(int dni)
+// ACCION : se ingresa el dni y se modifican los datos del freelance
+// PARAMETROS: int dni -> se valida la existencia del freelance y se devuelve
+//             la estructura del mismo.
+// DEVUELVE : void --> ningun dato, ya que se proceden a modificar registros
+//-----------------------------------------------------------------------------
+
+
+
+
 #endif // ARCHIVOS_H_INCLUDED
 
 //=============================================================================

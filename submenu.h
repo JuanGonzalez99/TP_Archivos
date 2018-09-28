@@ -230,6 +230,40 @@ void menuCargaGral()
 }
 
 //=============================================================================
+// FUNCION : tipo nombre(lista de parametros)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+// que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : tipo --> explicacion si representa algo.
+//-----------------------------------------------------------------------------
+void menuModificarFreelance()
+{
+    int dni;
+    sys::cls();
+    cout << "#============================================================================#" << endl;
+    cout << "|                       MODIFICAR FREELANCE POR DNI                          |" << endl;
+    cout << "#============================================================================#" << endl;
+    cout << endl;
+        cout << endl;
+    cout << "Ingrese el DNI a buscar: ";
+    cin >> dni; cin.ignore();
+    cout << endl;
+
+    verificarFreelances();
+
+    if(!existeFreelance(dni))
+    {
+        cout << "Freelance inexistente" << endl;
+        pedirEnter("Enter ");
+        return;
+    }
+    modificarFreelance(dni);
+    mostrarFreelance(buscarFreelanceDNI(dni));
+    pedirEnter("\n\n(Presione enter para volver) ");
+
+}
+
+//=============================================================================
 // FUNCION : void menuCargaDNInada)
 // ACCION : carga al freelance por DNI.
 // PARAMETROS: -.
