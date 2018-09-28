@@ -249,19 +249,22 @@ void modificarFreelance(Freelance reg)
 //Set de variables, para modificar valores de Freelance
     FILE *p;
     p = fopen(FREELANCES,"rb+");
+    Freelance aux;
     if(p==NULL)
     {
         exit(1);
     }
 
-    while(fread(&reg,sizeof(Freelance),1,p)==1)
+    while(fread(&aux,sizeof(Freelance),1,p)==1)
     {
-
-
-            fseek(p, ftell(p)-sizeof reg, 0);
-            fwrite(&reg, sizeof(Freelance), 1, p);
+    // Valido el registro de DNI que me pasastes con el registro de DNI que leo del disco.
+        if(reg.DNI == aux.DNI){
+            fseek(p, ftell(p)-sizeof aux, 0);
+            fwrite(&aux, sizeof(Freelance), 1, p);
             fclose(p);
             exit(1);
+
+        }
     }
 
     fclose(p);
