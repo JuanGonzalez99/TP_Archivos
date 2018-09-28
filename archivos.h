@@ -262,6 +262,7 @@ void modificarFreelance(Freelance reg)
             fseek(p, ftell(p)-sizeof aux, 0);
             fwrite(&aux, sizeof(Freelance), 1, p);
             fclose(p);
+            return;
             }
     }
 
