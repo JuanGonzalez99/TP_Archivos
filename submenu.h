@@ -258,7 +258,6 @@ void menuModificarFreelance()
         return;
     }
     modificarFreelance(dni);
-    mostrarFreelance(buscarFreelanceDNI(dni));
     pedirEnter("\n\n(Presione enter para volver) ");
 
 }
