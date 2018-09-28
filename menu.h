@@ -81,30 +81,31 @@ void menuPrincipal()
         cout << "|                                                                            |" << endl;
         cout << "|                      3.            Reportes                                |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      4.             Salir                                  |" << endl;
+        cout << "|                      s.             Salir                                  |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "+----------------------------------------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(4);
+        char op = validarOpcion("123Ss");
 
         sys::cls();
         switch(op)
         {
-            case 1:
+            case '1':
             {
                 menuPrecio();
             }break;
-            case 2:
+            case '2':
             {
                 menuFreelancers();
             }break;
-            case 3:
+            case '3':
             {
                 menuReportes();
             }break;
-            case 4:
+            case 'S':
+            case 's':
             {
                 if(confirmar())
                     return;
@@ -144,20 +145,20 @@ void menuPrecio()
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(3);
+        char op = validarOpcion("123");
 
         sys::cls();
         switch(op)
         {
-            case 1:
+            case '1':
             {
                 mostrarPrecios();
             }break;
-            case 2:
+            case '2':
             {
                 menuConfigPrecios();
             }break;
-            case 3:
+            case '3':
             {
                 return;
             }break;
@@ -187,11 +188,11 @@ void menuFreelancers()
         cout << "|                                                                            |" << endl;
         cout << "|                      2.       Buscar freelance                             |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      3.    Carga de horas general                          |" << endl;
+        cout << "|                      3.     Modificar freelance                            |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "|                      4.    Carga de horas por DNI                          |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      5.    Modificar Freelance por DNI                     |" << endl;
+        cout << "|                      5.    Carga de horas general                          |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "|                      6.            Volver                                  |" << endl;
         cout << "|                                                                            |" << endl;
@@ -199,32 +200,32 @@ void menuFreelancers()
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(6);
+        char op = validarOpcion("123456");
 
         sys::cls();
         switch(op)
         {
-            case 1:
+            case '1':
             {
                 menuAgregar();
             }break;
-            case 2:
+            case '2':
             {
                 menuBusqueda();
             }break;
-            case 3:
-            {
-                menuCargaGral();
-            }break;
-            case 4:
-            {
-                menuCargaDNI();
-            }break;
-            case 5:
+            case '3':
             {
                 menuModificarFreelance();
             }break;
-            case 6:
+            case '4':
+            {
+                menuCargaDNI();
+            }break;
+            case '5':
+            {
+                menuCargaGral();
+            }break;
+            case '6':
             {
                 return;
             }break;
@@ -257,20 +258,20 @@ void menuReportes()
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(3);
+        char op = validarOpcion("123");
 
         sys::cls();
         switch(op)
         {
-            case 1:
+            case '1':
             {
                 reportePorTipo();
             }break;
-            case 2:
+            case '2':
             {
                 reporteGeneral();
             }break;
-            case 3:
+            case '3':
             {
                 return;
             }break;

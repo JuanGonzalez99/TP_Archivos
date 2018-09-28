@@ -39,28 +39,58 @@ void pedirEnter(const char* txt = "")
 }
 
 //=============================================================================
+// FUNCION : bool strSub(char* cad, char* subc)
+// ACCION : Recorre la primera cadena en busca de la aparición de la segunda
+//          cadena.
+// PARAMETROS: const char* cad ->
+//             char* subc ->
+// DEVUELVE : bool --> true si se encuentra la subcadena, false caso contrario.
+//-----------------------------------------------------------------------------
+bool strSub(const char* cad, char* subc)
+{
+    bool igualdad;
+
+    for(int x=0; cad[x]!='\0'; x++)
+    {
+        igualdad = true;
+        if(cad[x]==subc[0])
+        {
+            for(int y=0; subc[y]!='\0'; y++)
+            {
+                if(cad[x+y]!=subc[y])
+                    igualdad=false;
+            }
+
+            if(igualdad)
+                return true;
+        }
+    }
+    return false;
+}
+
+//=============================================================================
 // FUNCION : int validarOpcion(int _max)
 // ACCION : validas el ingreso  de numeros.
 // PARAMETROS: int _max -> valida el valor entero ingresado.
 // DEVUELVE : int --> devuelve un valor del resultado de una
 // operacion matematica de resta.
 //-----------------------------------------------------------------------------
-int validarOpcion(int _max)
+char validarOpcion(const char* opciones, const char* textoError="Ingrese una opcion del menu: ")
 {
     char op[2];
     sys::getline(op, 2);
 
-    while( strlen(op) != 1 || op[0] < '1' || op[0] > char(_max+48) )
+    while( strlen(op) != 1 || !strSub(opciones, op) )
     {
         if( strlen(op) != 1 )
             cout << "Ingrese un caracter: ";
         else
-            cout << "Ingrese una opcion del menu: ";
+            cout << textoError;
 
         sys::getline(op, 2);
     }
 
-    return int(op[0]-48);
+    return op[0];
 }
 
 //=============================================================================
@@ -204,36 +234,6 @@ void toLower(char* cadena)
         if( cadena[x]>='a' && cadena[x]<='z' )
             cadena[x] = cadena[x]+32;
     }
-}
-
-//=============================================================================
-// FUNCION : bool strSub(char* cad, char* subc)
-// ACCION : Recorre la primera cadena en busca de la aparición de la segunda
-//          cadena.
-// PARAMETROS: char* cad ->
-//             char* subc ->
-// DEVUELVE : bool --> true si se encuentra la subcadena, false caso contrario.
-//-----------------------------------------------------------------------------
-bool strSub(char* cad, char* subc)
-{
-    bool igualdad;
-
-    for(int x=0; cad[x]!='\0'; x++)
-    {
-        igualdad = true;
-        if(cad[x]==subc[0])
-        {
-            for(int y=0; subc[y]!='\0'; y++)
-            {
-                if(cad[x+y]!=subc[y])
-                    igualdad=false;
-            }
-
-            if(igualdad)
-                return true;
-        }
-    }
-    return false;
 }
 
 //=============================================================================
