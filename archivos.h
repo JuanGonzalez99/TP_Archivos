@@ -174,7 +174,7 @@ void llenarFreelances(Freelance *v)
 // PARAMETROS: int dni -> Se ingresa el dni para luego hacer la busqueda.
 // DEVUELVE : bool ( el mismo se usa para validar si existe o no el freelance ).
 //-----------------------------------------------------------------------------
-bool existeFreelance(int dni)
+bool existeFreelance(long long dni)
 {
     FILE *p;
     p = fopen(FREELANCES,"rb");
