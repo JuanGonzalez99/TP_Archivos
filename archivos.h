@@ -168,10 +168,10 @@ void llenarFreelances(Freelance *v)
 }
 
 //=============================================================================
-// FUNCION : bool existeFreelance(int dni)
+// FUNCION : bool existeFreelance(long long dni)
 // ACCION : Se ingresa el dni para luego leer el
 // archivo y validar la existencia del Freelance.
-// PARAMETROS: int dni -> Se ingresa el dni para luego hacer la busqueda.
+// PARAMETROS: long long dni -> Se ingresa el dni para luego hacer la busqueda.
 // DEVUELVE : bool ( el mismo se usa para validar si existe o no el freelance ).
 //-----------------------------------------------------------------------------
 bool existeFreelance(long long dni)
@@ -203,10 +203,10 @@ bool existeFreelance(long long dni)
 }
 
 //=============================================================================
-// FUNCION : Freelance buscarFreelanceDNI(int dni)
+// FUNCION : Freelance buscarFreelanceDNI(dni)
 // ACCION : se ingresa el dni y se devuelve la estructura para su posterior
 // manipulacion.
-// PARAMETROS: int dni -> se valida la existencia del freelance y se devuelve
+// PARAMETROS: long long dni -> se valida la existencia del freelance y se devuelve
 //             la estructura del mismo.
 // DEVUELVE : Freelance --> estructura de datos.
 //-----------------------------------------------------------------------------
