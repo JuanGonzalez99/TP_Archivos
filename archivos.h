@@ -237,10 +237,11 @@ Freelance buscarFreelanceDNI(long long dni)
 }
 
 //=============================================================================
-// FUNCION : Freelance modificarFreelance(int dni)
-// ACCION : se ingresa el dni y se modifican los datos del freelance
-// PARAMETROS: int dni -> se valida la existencia del freelance y se devuelve
-//             la estructura del mismo.
+// FUNCION : Freelance modificarFreelance(reg)
+// ACCION : Se ingresa la estructura para luego obtener el dato de DNI
+//          para luego comparar contra el dato del DNI del archivo.
+// PARAMETROS: Freelance reg -> se valida la existencia del mismo en cuanto su DNI
+//              sea el mismo.
 // DEVUELVE : void --> ningun dato, ya que se proceden a modificar registros
 //-----------------------------------------------------------------------------
 void modificarFreelance(Freelance reg)
