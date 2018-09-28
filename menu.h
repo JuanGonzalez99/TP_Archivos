@@ -191,13 +191,15 @@ void menuFreelancers()
         cout << "|                                                                            |" << endl;
         cout << "|                      4.    Carga de horas por DNI                          |" << endl;
         cout << "|                                                                            |" << endl;
-        cout << "|                      5.            Volver                                  |" << endl;
+        cout << "|                      5.    Modificar Freelance por DNI                     |" << endl;
+        cout << "|                                                                            |" << endl;
+        cout << "|                      6.            Volver                                  |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "+----------------------------------------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        int op = validarOpcion(5);
+        int op = validarOpcion(6);
 
         sys::cls();
         switch(op)
@@ -219,6 +221,10 @@ void menuFreelancers()
                 menuCargaDNI();
             }break;
             case 5:
+            {
+                menuModificarFreelance();
+            }break;
+            case 6:
             {
                 return;
             }break;
