@@ -65,7 +65,22 @@ void bienvenida()
 void despedida()
 {
     sys::cls();
-    cout << "Chau" << endl;
+    cout   << " Hasta Luego y muchas gracias por usar nuestro software!!!" << endl << endl
+		 <<	"         .                      ." << endl
+		 <<	"         .                      ;" << endl
+		 <<	"         :                  - --+- -" << endl
+		 <<	"         !           .          !" << endl
+		 <<	"         |        .             ." << endl
+		 <<	"         |_         +" << endl
+		 <<	"      ,  | `." << endl
+		 <<	"--- --+-<#>-+- ---  --  -" << endl
+		 <<	"      `._|_,'" << endl
+		 <<	"         T" << endl
+		 <<	"         |" << endl
+		 <<	"         !" << endl
+		 <<	"         :         . : " << endl
+		 <<	"         .       *" << endl
+		 <<	"Desarrolladores: Juan Gonzalez y Javier Pereyra" << endl;
     pedirEnter("\n\nPresione enter ");
 }
 
