@@ -28,7 +28,7 @@
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : void bienvenida(ninguno)
+// FUNCION : void bienvenida()
 // ACCION : La siguiente funcion representa la bienvenida utilizando
 //          Un conjunto de salidas.
 // PARAMETROS: ninguno.
@@ -36,7 +36,7 @@
 //-----------------------------------------------------------------------------
 void bienvenida()
 {
-    cout   << "    Bienvenido a MAGIC SOFTWARE!" << endl << endl
+    cout << "    Bienvenido a MAGIC SOFTWARE!" << endl << endl
 		 <<	"                       ." << endl
 		 <<	"            /^\\     ." << endl
 		 <<	"       /\\   'V''" << endl
@@ -49,16 +49,14 @@ void bienvenida()
 		 <<	"     \\/--v}  I     o   ." << endl
 		 <<	"     |    |  I   _________" << endl
 		 <<	"     |    |  I c(`      ')o" << endl
-		 <<	"     |    l  I   \\.    ,/      -Row" << endl
+		 <<	"     |    l  I   \\.    ,/" << endl
 		 <<	"   _/j  L l\\_!  _//^---^\\_" << endl
 		 <<	"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    pedirEnter("\n\nPresione enter ");
+    pedirEnter("\n\nPresione enter para continuar ");
 }
 
-//*****************************************************************************
-// DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : void despedida(ninguno)
+// FUNCION : void despedida()
 // ACCION : La siguiente funcion representa una despedida utilizando
 //          Un conjunto de salidas.
 // PARAMETROS: ninguno.
@@ -67,7 +65,8 @@ void bienvenida()
 void despedida()
 {
     sys::cls();
-    cout   << " Hasta Luego y muchas gracias por usar nuestro software!!!" << endl << endl
+    cout << " Hasta Luego y muchas gracias por usar nuestro software!!!" << endl
+         << endl
 		 <<	"         .                      ." << endl
 		 <<	"         .                      ;" << endl
 		 <<	"         :                  - --+- -" << endl
@@ -82,21 +81,21 @@ void despedida()
 		 <<	"         !" << endl
 		 <<	"         :         . : " << endl
 		 <<	"         .       *" << endl
-		 <<	"Desarrolladores: Juan Gonzalez y Javier Pereyra" << endl;
-    pedirEnter("\n\nPresione enter ");
+		 << endl
+		 <<	"Desarrolladores: Juan Gonzalez y Javier Pereyra" << endl
+		 << "Creditos de los artistas: Rowan Crawford y Ojo" << endl;
+    pedirEnter("\n\nPresione enter para finalizar el programa ");
 }
 
 void menuPrecio();
-void menuFreelancers();
+void menuFreelances();
 void menuReportes();
 void menuAyuda();
 
-//*****************************************************************************
-// DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : void menuPrincipal(ninguno)
-// ACCION : La siguiente funcion representa un menu utilizando
-//          Un conjunto de salidas validando el ingreso de las mismas.
+// FUNCION : void menuPrincipal()
+// ACCION : La siguiente funcion dispone al usuario de un menu principal
+//          mediante el cual puede empezar a trabajar.
 // PARAMETROS: ninguno.
 // DEVUELVE : nada --> esta funcion es void.
 //-----------------------------------------------------------------------------
@@ -135,7 +134,7 @@ void menuPrincipal()
             }break;
             case '2':
             {
-                menuFreelancers();
+                menuFreelances();
             }break;
             case '3':
             {
@@ -158,9 +157,8 @@ void menuPrincipal()
 }
 
 //=============================================================================
-// FUNCION : void menuPrecio(Ninguno)
-// ACCION : Representa un menu de opciones para el Precio por hora utilizando una
-//          salida por consola.
+// FUNCION : void menuPrecio()
+// ACCION : Presenta un menu de opciones para el Precio por hora.
 // PARAMETROS: ninguno.
 // DEVUELVE : void --> ninguno ya que es una funcion void.
 //-----------------------------------------------------------------------------
@@ -209,16 +207,15 @@ void menuPrecio()
 }
 
 //=============================================================================
-// FUNCION : void menuFreelancers(Ninguno)
+// FUNCION : void menuFreelances()
 // ACCION : Representa un menu de opciones para freelances utilizando una
 //          salida por consola validando el ingreso de opciones.
 // PARAMETROS: ninguno.
 // DEVUELVE : void --> ninguno ya que es una funcion void.
 //-----------------------------------------------------------------------------
-void menuFreelancers()
+void menuFreelances()
 {
-    bool volver = false;
-    while(!volver)
+    while(!false)
     {
         sys::cls();
         cout << "#============================================================================#" << endl;
@@ -278,7 +275,7 @@ void menuFreelancers()
 }
 
 //=============================================================================
-// FUNCION : void menuReportes(Ninguno)
+// FUNCION : void menuReportes()
 // ACCION : Representa un menu de opciones para los reportes utilizando una
 //          salida por consola validando el ingreso de opciones.
 // PARAMETROS: ninguno.
@@ -286,8 +283,7 @@ void menuFreelancers()
 //-----------------------------------------------------------------------------
 void menuReportes()
 {
-    bool volver = false;
-    while(!volver)
+    while(2)
     {
         sys::cls();
         cout << "#============================================================================#" << endl;
@@ -331,7 +327,7 @@ void menuReportes()
 
 
 //=============================================================================
-// FUNCION : void menuAyuda(Ninguno)
+// FUNCION : void menuAyuda()
 // ACCION : Representa un menu de ayuda para el usuario utilizando salidas
 //          por consola.
 // PARAMETROS: ninguno.
@@ -356,7 +352,7 @@ void menuAyuda()
     cout << "#                tipos de Freelance como asi tambien le permite  a usted     #" << endl;
     cout << "#                cargar la cantidad de horas por DNI (4) para cada uno de    #" << endl;
     cout << "#                los freelance. Tambien dispone de una opcion (5) para       #" << endl;
-    cout << "#                cargar las horas trabajadas.                                #" << endl;
+    cout << "#                cargar las horas trabajadas de todos.                       #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 3.Reportes: Esta opcion le permite a usted ver la estadistica de horas     #" << endl;
     cout << "#             trabajadas por freelance (1) y ademas ver un reporte general   #" << endl;
@@ -368,50 +364,52 @@ void menuAyuda()
     cout << "#============================================================================#" << endl;
     cout << "#                              PRECIO POR HORA                               #" << endl;
     cout << "#----------------------------------------------------------------------------#" << endl;
-    cout << "# 1.Mostrar precio por hora: Muestra el precio de cada tipo de Freelance.    #" << endl;
+    cout << "# 1.Mostrar precio por hora: Muestra el precio por hora de cada tipo de      #" << endl;
+    cout << "#                            Freelance.                     (presione enter) #"; pedirEnter();
     cout << "#                                                                            #" << endl;
     cout << "# 2.Configurar precio por hora: Ingresa el nuevo precio por hora de          #" << endl;
     cout << "#                               cada tipo de freelance                       #" << endl;
     cout << "#                               ( DISENADOR=1, DESARROLLADOR=2, ANALISTA=3 ) #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "#                                                                            #" << endl;
-    cout << "# 3.Volver: volver al menu principal                        (presione enter) #"; pedirEnter();
+    cout << "# 3.Volver: volver al menu principal                                         #" << endl;
     cout << "#============================================================================#" << endl;
     cout << "#                                 FREELANCES                                 #" << endl;
     cout << "#----------------------------------------------------------------------------#" << endl;
-    cout << "# 1.Agregar freelance: Se agrega el Nombre,Apellido,Tipo de Freelance y DNI  #" << endl;
-    cout << "#                      del nuevo freelance.                                  #" << endl;
-    cout << "#                      ( ATENCION:POR FAVOR NO INGRESE UN DNI YA EXISTENTE ) #" << endl;
+    cout << "# 1.Agregar freelance: Se ingresa el nombre, apellido, tipo de Freelance     #" << endl;
+    cout << "#                      y DNI de un nuevo freelance.                          #" << endl;
+    cout << "#                      ( ATENCION: SI INGRESA UN DNI YA EXISTENTE, SE        #" << endl;
+    cout << "#                      PERDERAN LOS DATOS DEL NUEVO FREELANCE)               #" << endl;
     cout << "#                                                                            #" << endl;
-    cout << "# 2.Buscar freelance: Busca el freelance ingresando el Nombre o Apellido     #" << endl;
+    cout << "# 2.Buscar freelance: Busca el freelance ingresando el nombre, el apellido   #" << endl;
+    cout << "#                     o parte de uno de ambos. Si hay mas de 5 coincidencias #" << endl;
+    cout << "#                     se dispondra de un paginado.                           #" << endl;
     cout << "#                     Opcion 1: ayuda, Opcion 2: salir                       #" << endl;
-    cout << "#                    ( ATENCION: INGRESAR UN FREELANCE PREVIAMENTE CARGADO ) #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 3.Modificar freelance: Ingrese el DNI y automaticamente usted podra        #" << endl;
-    cout << "#                        cambiar los datos del mismo  ( Nombre, Apellido,    #" << endl;
-    cout << "#                        y Tipo de Freelance )     .                         #" << endl;
-    cout << "#                      ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )      #" << endl;
+    cout << "#                        cambiar los datos del mismo ( Nombre, Apellido,     #" << endl;
+    cout << "#                        y Tipo de Freelance ).                              #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 4.Carga de horas general: Ingresa las horas trabajadas para cada uno       #" << endl;
-    cout << "#                           de los Freelance  ingresando su DNI              #" << endl;
-    cout << "#                         ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )   #" << endl;
+    cout << "#                           de los Freelances                                #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 5.Carga de horas por DNI: Esta opcion le permite a usted ingresar las      #" << endl;
-    cout << "#                           horas trabajadas del Freelance.                  #" << endl;
+    cout << "#                           horas trabajadas de un Freelance ingresando      #" << endl;
+    cout << "#                           su DNI.                         (presione enter) #"; pedirEnter();
     cout << "#                          ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO    #" << endl;
     cout << "#                            ADEMAS, EXISTE UNA LIMITACION DE 250 HORAS      #" << endl;
-    cout << "#                            POR CARGA )                                     #" << endl;
+    cout << "#                            POR FREELANCE )                                 #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "#                                                                            #" << endl;
-    cout << "# 6.Volver: Vuelve al menu principal.                       (presione enter) #"; pedirEnter();
+    cout << "# 6.Volver: Vuelve al menu principal.                                        #" << endl;
     cout << "#============================================================================#" << endl;
     cout << "#                                  REPORTES                                  #" << endl;
     cout << "#----------------------------------------------------------------------------#" << endl;
     cout << "# 1.Horas trabajadas por tipo de freelance: Muestra el total de horas        #" << endl;
-    cout << "#                                           trabajadas por cada uno de       #" << endl;
-    cout << "#                                           los freelance                    #" << endl;
+    cout << "#                                           trabajadas por cada tipo         #" << endl;
+    cout << "#                                           de freelance                     #" << endl;
     cout << "#                                                                            #" << endl;
-    cout << "# 2.Reporte general: reporte general de todos los freelance                  #" << endl;
+    cout << "# 2.Reporte general: Reporte general de todos los freelance                  #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 3.Volver: Volver al menu principal.                                        #" << endl;
     cout << "#============================================================================#" << endl;
