@@ -94,27 +94,51 @@ void menuConfigPrecios()
         {
             case '1':
             {
-                int n;
+                char n[5];
                 cout << "Ingrese el nuevo precio por hora: ";
-                cin >> n; cin.ignore();
-                if(n < 100) cout << "Rata";
-                p.diseniadores = n;
+                sys::getline(n, 5);
+                while(!esEntero(n) || strlen(n)<1 || strlen(n)>4)
+                {
+                    if(!esEntero(n))
+                        cout << "Ingrese un numero valido: ";
+                    else if(strlen(n)>4)
+                        cout << "Ingrese un numero de no mas de 4 cifras: ";
+                    sys::getline(n, 5);
+                }
+
+                p.diseniadores = strToInt(n);
             }break;
             case '2':
             {
-                int n;
+                char n[5];
                 cout << "Ingrese el nuevo precio por hora: ";
-                cin >> n; cin.ignore();
-                if(n < 100) cout << "Rata";
-                p.desarrolladores = n;
+                sys::getline(n, 5);
+                while(!esEntero(n) || strlen(n)<1 || strlen(n)>4)
+                {
+                    if(!esEntero(n))
+                        cout << "Ingrese un numero valido: ";
+                    else if(strlen(n)>4)
+                        cout << "Ingrese un numero de no mas de 4 cifras: ";
+                    sys::getline(n, 5);
+                }
+
+                p.desarrolladores = strToInt(n);
             }break;
             case '3':
             {
-                int n;
+                char n[5];
                 cout << "Ingrese el nuevo precio por hora: ";
-                cin >> n; cin.ignore();
-                if(n < 100) cout << "Rata";
-                p.analistas = n;
+                sys::getline(n, 5);
+                while(!esEntero(n) || strlen(n)<1 || strlen(n)>4)
+                {
+                    if(!esEntero(n))
+                        cout << "Ingrese un numero valido: ";
+                    else if(strlen(n)>4)
+                        cout << "Ingrese un numero de no mas de 4 cifras: ";
+                    sys::getline(n, 5);
+                }
+
+                p.analistas = strToInt(n);
             }break;
             case 'S':
             case 's':
@@ -141,10 +165,10 @@ Freelance leerFreelance(bool esNuevo=true)
 {
     Freelance nuevo;
     cout << "Nombre: ";
-    validarNombre(nuevo.nombre, 30, "Ingrese un nombre de no mas de 30 caracteres: ", "Por favor, solo ingrese letras: ");
+    validarNombre(nuevo.nombre, 30, "Ingrese un nombre de no mas de 30 caracteres: ", "Por favor, solo ingrese letras y espacios: ");
     firstUpper(nuevo.nombre);
     cout << "Apellido: ";
-    validarNombre(nuevo.apellido, 30, "Ingrese un apellido de no mas de 30 caracteres: ", "Por favor, solo ingrese letras: ");
+    validarNombre(nuevo.apellido, 30, "Ingrese un apellido de no mas de 30 caracteres: ", "Por favor, solo ingrese letras y espacios: ");
     firstUpper(nuevo.apellido);
     cout << "Tipo de freelance (DISEÑADOR=1, DESARROLLADOR=2, ANALISTA=3): ";
     nuevo.tipo = (int)validarOpcion("123", "Ingrese una de las opciones mostradas: ")-49;
@@ -293,10 +317,14 @@ void menuBusqueda()
         cout << endl;
         cout << "¿A quien desea buscar? (1 para ayuda, 2 para salir): ";
         char busqueda[31];
-        sys::getline(busqueda, 30);
-        while( strlen(busqueda)<1 )
+        sys::getline(busqueda, 31);
+        while( (!soloLetras(busqueda) && !((busqueda[0]=='1' || busqueda[0]=='2') && strlen(busqueda)==1 )) || strlen(busqueda)<1 || strlen(busqueda)>30 )
         {
-            sys::getline(busqueda, 30);
+            if(!soloLetras(busqueda))
+                cout << "Ingrese solo letras, o una de las opciones: ";
+            else if(strlen(busqueda)>30)
+                cout << "Ingrese una busqueda de no mas de 30 caracteres: ";
+            sys::getline(busqueda, 31);
         }
 
         if( busqueda[0]=='1' && strlen(busqueda)==1 )
@@ -397,7 +425,9 @@ void menuBusqueda()
                 cout << endl;
                 cout << "Pag " << pag << " de " << maxPag << " (" << cantBusc << " resultados)" << endl;
                 cout << endl;
-                cout << "A para ir a la pagina anterior, D para ir a la pagina siguiete. S para volver" << endl;
+                cout << "'A' para ir a la pagina anterior" << endl;
+                cout << "'D' para ir a la pagina siguiete" << endl;
+                cout << "'S' para volver" << endl;
                 cout << endl;
                 cout << "Ingrese una opcion: ";
                 char op = validarOpcion("adsADS", "Ingrese una de las opciones mostradas: ");

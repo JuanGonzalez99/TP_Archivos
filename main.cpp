@@ -1,7 +1,7 @@
 //#############################################################################
 // ARCHIVO              : main.cpp
 // AUTORES              : Juan Gonzalez, Javier Pereyra.
-// VERSION              : 0.01 beta.
+// VERSION              : 1.00 final.
 // FECHA DE CREACION    : 30/08/2018.
 // ULTIMA ACTUALIZACION : 25/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
@@ -99,9 +99,9 @@ struct Freelance
 //------------------------------------------------------------------------------
 int main()
 {
-//    bienvenida();
+    bienvenida();
     menuPrincipal();
-//    despedida();
+    despedida();
     //--------------------------------------------------------------------------
     // FIN DE LA FUNCION main() SIN ERRORES.
     //--------------------------------------------------------------------------
