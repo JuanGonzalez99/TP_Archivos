@@ -36,7 +36,22 @@
 //-----------------------------------------------------------------------------
 void bienvenida()
 {
-    cout << "Hola" << endl;
+    cout   << "    Bienvenido a MAGIC SOFTWARE!" << endl << endl
+		 <<	"                       ." << endl
+		 <<	"            /^\\     ." << endl
+		 <<	"       /\\   'V''" << endl
+		 <<	"      /__\\   I      O  o" << endl
+		 <<	"     //..\\\\  I     ." << endl
+		 <<	"     \\].`[/  I" << endl
+		 <<	"     /l\\/j\\  (]    .  O" << endl
+		 <<	"    /. ~~ ,\\/I          ." << endl
+		 <<	"    \\\\L__j^\\/I       o" << endl
+		 <<	"     \\/--v}  I     o   ." << endl
+		 <<	"     |    |  I   _________" << endl
+		 <<	"     |    |  I c(`      ')o" << endl
+		 <<	"     |    l  I   \\.    ,/      -Row" << endl
+		 <<	"   _/j  L l\\_!  _//^---^\\_" << endl
+		 <<	"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     pedirEnter("\n\nPresione enter ");
 }
 
