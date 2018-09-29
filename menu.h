@@ -395,7 +395,9 @@ void menuAyuda()
     cout << "#                                                                            #" << endl;
     cout << "# 4.Carga de horas por DNI: Esta opcion le permite a usted ingresar las      #" << endl;
     cout << "#                           horas trabajadas del Freelance.                  #" << endl;
-    cout << "#                      ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )      #" << endl;
+    cout << "#                          ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO    #" << endl;
+    cout << "#                            ADEMAS, EXISTE UNA LIMITACION DE 250 HORAS      #" << endl;
+    cout << "#                            POR CARGA )                                     #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 5.Carga de horas general: Ingresa las horas trabajadas para cada uno       #" << endl;
     cout << "#                           de los Freelance                                 #" << endl;
