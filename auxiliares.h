@@ -120,7 +120,7 @@ bool soloLetras(char* cad)
 {
     for(int x=0; cad[x]!='\0'; x++)
     {
-        if((cad[x]<'A' || cad[x]>'Z') && (cad[x]<'a' || cad[x]>'z'))
+        if((cad[x]<'A' || cad[x]>'Z') && (cad[x]<'a' || cad[x]>'z') && cad[x]!=' ')
             return false;
     }
     return true;
@@ -315,6 +315,22 @@ int intlen(unsigned n)
     }while(n > 0);
 
     return cont;
+}
+
+//=============================================================================
+// FUNCION : int intlen(unsigned n)
+// ACCION : explicar brevemente que es lo que hace la funcion y como.
+// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
+//             que representa, y valores posibles si existieran limitaciones).
+// DEVUELVE : int --> cantidad de cifras del número pasado por parámetro.
+//-----------------------------------------------------------------------------
+void cortarEn(int fin, const char* cpy, char* paste)
+{
+    for(int x=0; x<fin; x++)
+    {
+        paste[x] = cpy[x];
+    }
+    paste[fin] = '\0';
 }
 
 #endif // AUXILIARES_H_INCLUDED

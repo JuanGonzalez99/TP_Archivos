@@ -140,9 +140,11 @@ Freelance leerFreelance(bool esNuevo=true)
 {
     Freelance nuevo;
     cout << "Nombre: ";
-    sys::getline(nuevo.nombre, 30);
+    validarNombre(nuevo.nombre, 30, "Ingrese un nombre de no mas de 30 caracteres: ", "Por favor, solo ingrese letras: ");
+    firstUpper(nuevo.nombre);
     cout << "Apellido: ";
-    sys::getline(nuevo.apellido, 30);
+    validarNombre(nuevo.apellido, 30, "Ingrese un apellido de no mas de 30 caracteres: ", "Por favor, solo ingrese letras: ");
+    firstUpper(nuevo.apellido);
     cout << "Tipo de freelance (DISEÑADOR=1, DESARROLLADOR=2, ANALISTA=3): ";
     nuevo.tipo = (int)validarOpcion("123", "Ingrese una de las opciones mostradas: ")-49;
     if(esNuevo)
@@ -155,15 +157,16 @@ Freelance leerFreelance(bool esNuevo=true)
 }
 
 //=============================================================================
-// FUNCION : void mostrarFreelance(Freelance f)
+// FUNCION : void mostrarFreelance(Freelance f, int modo=0)
 // ACCION : muestra los datos de los freelance.
 // PARAMETROS: Freelance f -> representa la estructura freelance la cual luego
-//             se utiliza para mostrar la informacion de la misma.
+//                            se utiliza para mostrar la informacion de la misma.
+//             int modo ->
 // DEVUELVE : void --> nada, debido a que es una funcion void.
 //-----------------------------------------------------------------------------
-void mostrarFreelance(Freelance f, bool modoListado=false)
+void mostrarFreelance(Freelance f, int modo=0)
 {
-    if(!modoListado)
+    if(modo == 0)
     {
         cout << "Nombre             : " << f.nombre << endl;
         cout << "Apellido           : " << f.apellido << endl;
@@ -171,9 +174,37 @@ void mostrarFreelance(Freelance f, bool modoListado=false)
         cout << "Tipo de freelance  : "; if(f.tipo == DISENIADOR) cout << "Diseñador"; else if(f.tipo == DESARROLLADOR) cout << "Desarrollador"; else cout << "Analista"; cout << endl;
         cout << "Horas              : " << f.horas << endl;
         cout << endl;
-        return;
     }
+    else
+    {
+        verificarPrecios();
+        tPrecios p = leerPrecios();
+        int sueldo;
+        if(f.tipo == DISENIADOR) sueldo = f.horas*p.diseniadores;
+        if(f.tipo == DESARROLLADOR) sueldo = f.horas*p.desarrolladores;
+        if(f.tipo == ANALISTA) sueldo = f.horas*p.analistas;
 
+        if(modo == 1)
+        {
+            char n[14]; if(strlen(f.nombre)>13) cortarEn(13, f.nombre, n); else strcpy(n, f.nombre);
+            char a[15]; if(strlen(f.apellido)>14) cortarEn(14, f.apellido, a); else strcpy(a, f.apellido);
+
+            cout << "|" << f.DNI; llenarEspacio(10-intlen(f.DNI)); cout << "|" << n; llenarEspacio(14-strlen(n));
+            cout << "|" << a; llenarEspacio(15-strlen(a)); cout << "|";
+            if(f.tipo == 0) cout << "Diseñador"; if(f.tipo == 1) cout << "Desarrollador"; if(f.tipo == 2) cout << "Analista";
+            cout << "|" << f.horas; llenarEspacio(9-intlen(f.horas)); cout << "|" << sueldo; llenarEspacio(12-intlen(sueldo));
+            cout << "|" << endl;
+        }
+        else
+        {
+            char n[16]; if(strlen(f.nombre)>15) cortarEn(15, f.nombre, n); else strcpy(n, f.nombre);
+            char a[16]; if(strlen(f.apellido)>15) cortarEn(15, f.apellido, a); else strcpy(a, f.apellido);
+
+            cout << "|" << f.DNI; llenarEspacio(14-intlen(f.DNI)); cout << "|" << n; llenarEspacio(15-strlen(n));
+            cout << "|" << a; llenarEspacio(15-strlen(a)); cout << "|" << f.horas; llenarEspacio(13-intlen(f.horas));
+            cout << "|" << sueldo; llenarEspacio(15-intlen(sueldo)); cout << "|" << endl;
+        }
+    }
 }
 
 //=============================================================================
@@ -479,14 +510,60 @@ void reporteGeneral()
 
     llenarFreelances(registros);
 
+    verificarPrecios();
+    tPrecios p = leerPrecios();
+
+    long long horasDis = 0, horasDes = 0, horasAn = 0;
+    long long sueDis = 0, sueDes = 0, sueAn = 0;
+
     sys::cls();
     cout << "#============================================================================#" << endl;
-    cout << "|                              REPORTE GENERAL (beta)                        |" << endl;
+    cout << "|                              REPORTE GENERAL                               |" << endl;
     cout << "#============================================================================#" << endl;
+    cout << "|      DNI     |    Nombre     |   Apellido    |    Horas    |     Sueldo    |" << endl;
+    cout << "#============================================================================#" << endl;
+    cout << "|                                DISEÑADORES                                 |" << endl;
+    cout << "+----------------------------------------------------------------------------+" << endl;
     for(int x=0; x<cantRegistros(); x++)
     {
-        mostrarFreelance(registros[x]);
+        if(registros[x].tipo == DISENIADOR)
+        {
+            mostrarFreelance(registros[x], 2);
+            horasDis += registros[x].horas;
+            sueDis += registros[x].horas * p.diseniadores;
+        }
     }
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    cout << "                               |    Totales    |"<<horasDis;llenarEspacio(13-intlen(horasDis));cout<<"|"<<sueDis;llenarEspacio(15-intlen(sueDis));cout<<"|"<<endl;
+    cout << "#============================================================================#" << endl;
+    cout << "|                              DESARROLLADORES                               |" << endl;
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    for(int x=0; x<cantRegistros(); x++)
+    {
+        if(registros[x].tipo == DESARROLLADOR)
+        {
+            mostrarFreelance(registros[x], 2);
+            horasDes += registros[x].horas;
+            sueDes += registros[x].horas * p.desarrolladores;
+        }
+    }
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    cout << "                               |    Totales    |"<<horasDes;llenarEspacio(13-intlen(horasDes));cout<<"|"<<sueDes;llenarEspacio(15-intlen(sueDes));cout<<"|"<<endl;
+    cout << "#============================================================================#" << endl;
+    cout << "|                                 ANALISTAS                                  |" << endl;
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    for(int x=0; x<cantRegistros(); x++)
+    {
+        if(registros[x].tipo == ANALISTA)
+        {
+            mostrarFreelance(registros[x], 2);
+            horasAn += registros[x].horas;
+            sueAn += registros[x].horas * p.analistas;
+        }
+    }
+    cout << "+----------------------------------------------------------------------------+" << endl;
+    cout << "                               |    Totales    |"<<horasAn;llenarEspacio(13-intlen(horasAn));cout<<"|"<<sueAn;llenarEspacio(15-intlen(sueAn));cout<<"|"<<endl;
+    cout << "------------------------------------------------------------------------------" << endl;
 
     free(registros);
     pedirEnter("\nPresione enter para volver ");
