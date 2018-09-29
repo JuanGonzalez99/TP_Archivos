@@ -141,11 +141,11 @@ void validarNombre(char* cad, unsigned tam, const char* textoErrorTam, const cha
 {
     char aux[tam + 2];
     sys::getline(aux, tam);
-    while(!soloLetras(aux) || strlen(aux)>tam)
+    while(!soloLetras(aux) || strlen(aux)>tam || strlen(aux)<1)
     {
         if(strlen(aux)>tam)
             cout << textoErrorTam;
-        else
+        else if(!soloLetras(aux))
             cout << textoErrorLetras;
         sys::getline(aux, tam);
     }
