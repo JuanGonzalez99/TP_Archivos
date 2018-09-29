@@ -227,11 +227,12 @@ Freelance buscarFreelanceDNI(long long dni)
         if(dni == auxiliar.DNI)
         {
 
+            fclose(p);
             return auxiliar; //retorno toda la estructura
 
         }
     }
-
+    fclose(p);
     return auxiliar;
 
 }
