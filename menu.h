@@ -28,11 +28,11 @@
 //*****************************************************************************
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void bienvenida(ninguno)
+// ACCION : La siguiente funcion representa la bienvenida utilizando
+//          Un conjunto de salidas.
+// PARAMETROS: ninguno.
+// DEVUELVE : nada --> esta funcion es void.
 //-----------------------------------------------------------------------------
 void bienvenida()
 {
@@ -55,12 +55,14 @@ void bienvenida()
     pedirEnter("\n\nPresione enter ");
 }
 
+//*****************************************************************************
+// DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void despedida(ninguno)
+// ACCION : La siguiente funcion representa una despedida utilizando
+//          Un conjunto de salidas.
+// PARAMETROS: ninguno.
+// DEVUELVE : nada --> esta funcion es void.
 //-----------------------------------------------------------------------------
 void despedida()
 {
@@ -89,12 +91,14 @@ void menuFreelancers();
 void menuReportes();
 void menuAyuda();
 
+//*****************************************************************************
+// DEFINICION DE LAS FUNCIONES
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuPrincipal(ninguno)
+// ACCION : La siguiente funcion representa un menu utilizando
+//          Un conjunto de salidas validando el ingreso de las mismas.
+// PARAMETROS: ninguno.
+// DEVUELVE : nada --> esta funcion es void.
 //-----------------------------------------------------------------------------
 void menuPrincipal()
 {
@@ -154,11 +158,11 @@ void menuPrincipal()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuPrecio(Ninguno)
+// ACCION : Representa un menu de opciones para el Precio por hora utilizando una
+//          salida por consola.
+// PARAMETROS: ninguno.
+// DEVUELVE : void --> ninguno ya que es una funcion void.
 //-----------------------------------------------------------------------------
 void menuPrecio()
 {
@@ -205,11 +209,11 @@ void menuPrecio()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuFreelancers(Ninguno)
+// ACCION : Representa un menu de opciones para freelances utilizando una
+//          salida por consola validando el ingreso de opciones.
+// PARAMETROS: ninguno.
+// DEVUELVE : void --> ninguno ya que es una funcion void.
 //-----------------------------------------------------------------------------
 void menuFreelancers()
 {
@@ -273,6 +277,13 @@ void menuFreelancers()
 
 }
 
+//=============================================================================
+// FUNCION : void menuReportes(Ninguno)
+// ACCION : Representa un menu de opciones para los reportes utilizando una
+//          salida por consola validando el ingreso de opciones.
+// PARAMETROS: ninguno.
+// DEVUELVE : void --> ninguno ya que es una funcion void.
+//-----------------------------------------------------------------------------
 void menuReportes()
 {
     bool volver = false;
@@ -318,6 +329,14 @@ void menuReportes()
     }//Fin while
 }
 
+
+//=============================================================================
+// FUNCION : void menuAyuda(Ninguno)
+// ACCION : Representa un menu de ayuda para el usuario utilizando salidas
+//          por consola.
+// PARAMETROS: ninguno.
+// DEVUELVE : void --> ninguno ya que es una funcion void.
+//-----------------------------------------------------------------------------
 void menuAyuda()
 {
     sys::cls();
