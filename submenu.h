@@ -11,7 +11,8 @@
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-// aquí va una descripción general de la libreria
+//  En esta librería se encuentras los submenus del programa, en conjunto con
+//  funciones auxiliares propias de los submenus, tales como leerFreelance.
 //
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef SUBMENU_H_INCLUDED
@@ -21,8 +22,8 @@
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
 // FUNCION : void verificarPrecios()
-// ACCION : valida la existencia del archivo y  en casi de que no sea así
-// automaticamente genera un nuevo archivo preasignado valores.
+// ACCION : valida la existencia del archivo de precios y  en caso de no existir
+//          genera el archivo preasignado valores.
 // PARAMETROS: -.
 // DEVUELVE : void --> no devuelve ningun valor al ser void.
 //-----------------------------------------------------------------------------
@@ -40,8 +41,8 @@ void verificarPrecios()
 
 //=============================================================================
 // FUNCION : void mostrarPrecios()
-// ACCION : verifica precios, genera una estructura p y lee y
-// asigna los valores a esta estructura.
+// ACCION : muestra por pantalla de forma prolija los precios por hora de cada
+//          tipo de freelance.
 // PARAMETROS: -.
 // DEVUELVE : nada --> no devuelve ningun valor.
 //-----------------------------------------------------------------------------
@@ -63,17 +64,15 @@ void mostrarPrecios()
 }
 
 //=============================================================================
-// FUNCION : void menuConfigPrecios(ninguno)
-// ACCION : Se Ingresan los precios por hora para cada
-// uno de los tipos de Freelance.
+// FUNCION : void menuConfigPrecios()
+// ACCION : dispone un menu para que el usuario pueda configurar los precios
+//          por hora de cada tipo de freelance.
 // PARAMETROS: -.
 // DEVUELVE : nada --> no devuelve ningun valor al ser funcion void.
 //-----------------------------------------------------------------------------
 void menuConfigPrecios()
 {
-    bool volver = false;
-
-    while(!volver)
+    while(!!true)
     {
         verificarPrecios();
         tPrecios p = leerPrecios();
@@ -130,10 +129,12 @@ void menuConfigPrecios()
 }
 
 //=============================================================================
-// FUNCION : Freelance leerFreelance()
-// ACCION : Captura y devuelve un nuevo freelance
-// PARAMETROS: -.
-// DEVUELVE : Freelance, nuevo --> devuelve una estructura freelance para luego
+// FUNCION : Freelance leerFreelance(bool esNuevo=true)
+// ACCION : le pide los datos al usuario para generar un nuevo freelance y
+//          lo retorna.
+// PARAMETROS: bool esNuevo -> bandera para saber si se requiere un nuevo DNI
+//                             y poner las horas en 0 o no.
+// DEVUELVE : Freelance --> devuelve una estructura freelance para luego
 //            ser resguardada.
 //-----------------------------------------------------------------------------
 Freelance leerFreelance(bool esNuevo=true)
@@ -161,7 +162,9 @@ Freelance leerFreelance(bool esNuevo=true)
 // ACCION : muestra los datos de los freelance.
 // PARAMETROS: Freelance f -> representa la estructura freelance la cual luego
 //                            se utiliza para mostrar la informacion de la misma.
-//             int modo ->
+//             int modo -> se utiliza para determinar el modo en el que se desea
+//                         que la informacion sea mostrada. Puede ser 0, 1 ó
+//                         cualquier otro valor, habiendo 3 modos posibles.
 // DEVUELVE : void --> nada, debido a que es una funcion void.
 //-----------------------------------------------------------------------------
 void mostrarFreelance(Freelance f, int modo=0)
@@ -211,8 +214,8 @@ void mostrarFreelance(Freelance f, int modo=0)
 
 //=============================================================================
 // FUNCION : void verificarFreelances()
-// ACCION : valida si el archivo freelance existe y de no ser asi automaticamente
-// asigna valores pre-definidos para este Trabajo Practico.
+// ACCION : valida si el archivo freelance existe y de no ser asi
+//          asigna valores pre-definidos para este Trabajo Practico.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
@@ -237,8 +240,8 @@ void verificarFreelances()
 
 //=============================================================================
 // FUNCION : void menuAgregar()
-// ACCION : verifica los frealances, y luego ingresa nuevos
-// validando que los mismos ya no existan actualmente en el archivo.
+// ACCION : dispone un menu al usuario para agregar freelances, verificando
+//          que no ingrese un DNI repetido.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
@@ -274,7 +277,8 @@ void menuAgregar()
 
 //=============================================================================
 // FUNCION : void menuBusqueda()
-// ACCION : busca al freelance por DNI.
+// ACCION : le permite al usuario realizar una busqueda por nombre o apellido.
+//          se muestran los resultados que contengan el texto ingresado.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
@@ -431,11 +435,11 @@ void menuBusqueda()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuModificarFreelance()
+// ACCION : genera un menu que permite al usuario modificar los datos personales
+//          de un freelance ingresando su DNI.
+// PARAMETROS: -.
+// DEVUELVE : void --> no devuelve nada.
 //-----------------------------------------------------------------------------
 void menuModificarFreelance()
 {
@@ -444,7 +448,7 @@ void menuModificarFreelance()
     cout << "|                       MODIFICAR DATOS DE FREELANCE                         |" << endl;
     cout << "#============================================================================#" << endl;
     cout << endl;
-    cout << "Ingrese el DNI a buscar: ";
+    cout << "Ingrese el DNI del freelance a modificar: ";
 
     long long DNI = validarDNI();
 
@@ -469,7 +473,8 @@ void menuModificarFreelance()
 
 //=============================================================================
 // FUNCION : void menuCargaDNI()
-// ACCION : carga al freelance por DNI.
+// ACCION : permite al usuario cargar las horas trabajadas por un freelance
+//          introduciendo su DNI.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
@@ -519,11 +524,11 @@ void menuCargaDNI()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : void menuCargaGral()
+// ACCION : permite al usuario cargar las horas trabajadas en el mes de todos
+//          los freelances de corrido, disponiendo la información de cada uno.
+// PARAMETROS: -.
+// DEVUELVE : void --> no devuelve nada.
 //-----------------------------------------------------------------------------
 void menuCargaGral()
 {
@@ -556,7 +561,8 @@ void menuCargaGral()
 
 //=============================================================================
 // FUNCION : void reportePorTipo()
-// ACCION : Reporte de horas trabajadas por tipo de freelance con sus totales.
+// ACCION : muestra el reporte de las horas trabajadas por cada tipo de freelance
+//          con sus totales.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------
@@ -609,7 +615,7 @@ void reportePorTipo()
 
 //=============================================================================
 // FUNCION : void reporteGeneral()
-// ACCION : muestra un reporte general de cada Freelancer.
+// ACCION : muestra un reporte general todos los freelance, clasificando por tipo.
 // PARAMETROS: -.
 // DEVUELVE : void --> ninguno, es una funcion de tipo void.
 //-----------------------------------------------------------------------------

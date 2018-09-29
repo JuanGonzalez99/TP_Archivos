@@ -11,7 +11,9 @@
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-// aquí va una descripción general de la libreria
+//  En esta libreria se desarrollan funciones para la validacion de ingresos,
+//  en su mayoria, y tambien se encuentran funciones auxiliares para el
+//  emprolijamiento de la salida por pantalla.
 //
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef AUXILIARES_H_INCLUDED
@@ -27,8 +29,12 @@
 // DEFINICION DE LAS FUNCIONES
 //=============================================================================
 // FUNCION : void pedirEnter(const char* txt = "")
-// ACCION : recive una cadena.
-// PARAMETROS: const char* txt -> .
+// ACCION : esta funcion es llamada cuando se quiera pedir un enter al usuario.
+//          está especializada para que un ingreso accidental de caracteres extra
+//          no perjudique al buen funcionamiento programa.
+// PARAMETROS: const char* txt -> texto que se le mostrará al usuario,
+//                                generalmente indicando para qué se le precisa
+//                                apretar la tecla enter.
 // DEVUELVE : void.
 //-----------------------------------------------------------------------------
 void pedirEnter(const char* txt = "")
@@ -42,8 +48,8 @@ void pedirEnter(const char* txt = "")
 // FUNCION : bool strSub(char* cad, char* subc)
 // ACCION : Recorre la primera cadena en busca de la aparición de la segunda
 //          cadena.
-// PARAMETROS: const char* cad ->
-//             char* subc ->
+// PARAMETROS: const char* cad -> cadena que será recorrida.
+//             char* subc -> cadena que será buscada.
 // DEVUELVE : bool --> true si se encuentra la subcadena, false caso contrario.
 //-----------------------------------------------------------------------------
 bool strSub(const char* cad, char* subc)
@@ -69,11 +75,12 @@ bool strSub(const char* cad, char* subc)
 }
 
 //=============================================================================
-// FUNCION : int validarOpcion(int _max)
+// FUNCION : char validarOpcion(const char* opciones,
+//           const char* textoError="Ingrese una opcion del menu: ")
 // ACCION : validas el ingreso  de numeros.
-// PARAMETROS: int _max -> valida el valor entero ingresado.
-// DEVUELVE : int --> devuelve un valor del resultado de una
-// operacion matematica de resta.
+// PARAMETROS: const char* opciones -> valida el valor entero ingresado.
+//             const char* textoError -> .
+// DEVUELVE : char -->
 //-----------------------------------------------------------------------------
 char validarOpcion(const char* opciones, const char* textoError="Ingrese una opcion del menu: ")
 {
@@ -95,9 +102,11 @@ char validarOpcion(const char* opciones, const char* textoError="Ingrese una opc
 
 //=============================================================================
 // FUNCION : bool confirmar(const char* texto = "Esta seguro? (s/n) ")
-// ACCION : devuelve un valor booleando dependiendo de la opcion a tomar.
-// PARAMETROS: const char* text -> .
-// DEVUELVE : bool --> confirma si es verdadero o no.
+// ACCION : pide al usuario la confirmacion de una accion. Generalmente se
+//          utiliza para confirmar la eliminacion de un registro o el cierre
+//          del programa, que es su fin en este trabajo.
+// PARAMETROS: const char* text -> texto aclarando qué se le pide al usuario.
+// DEVUELVE : bool --> true si el usuario confirma, false caso contrario.
 //-----------------------------------------------------------------------------
 bool confirmar(const char* texto = "Esta seguro? (s/n) ")
 {
@@ -112,9 +121,11 @@ bool confirmar(const char* texto = "Esta seguro? (s/n) ")
 
 //=============================================================================
 // FUNCION : bool soloLetras(char* cad)
-// ACCION : valida si el ingreso de la cadena es de solo letras de la a(A) a la z(Z)
-// PARAMETROS: char* cad -> ingreso de cadena para validar si son todas letras.
-// DEVUELVE : bool --> representa si la cadena esta armada totalmetne por caracteres.
+// ACCION : valida si el ingreso de la cadena es de solo letras, y tambien se
+//          permiten espacios, ya que se utiliza para validar nombres, los cuales
+//          pueden ser compuestos (ej: De La Torre).
+// PARAMETROS: char* cad -> cadena de caracteres a validar.
+// DEVUELVE : bool --> true si solo contiene letras y/o espacios, false caso contrario.
 //-----------------------------------------------------------------------------
 bool soloLetras(char* cad)
 {
@@ -129,12 +140,15 @@ bool soloLetras(char* cad)
 //=============================================================================
 // FUNCION : void validarNombre(char* cad, unsigned tam,
 //           const char* textoErrorTam, const char*textoErrorLetras)
-// ACCION : Ingresa una cadena, el tamaño de la misma, tambien un texto explicativo
-//          en caso de error y ademas un error por si se ingresan letras incorrectas.
-// PARAMETROS: char* cad ->
-//             unsigend tam ->
-//             const char* textoErrorTam ->
-//             const char* textoErrorLetras ->
+// ACCION :
+// PARAMETROS: char* cad -> cadena a validar
+//             unsigend tam -> tamaño maximo de caracteres permitidos.
+//             const char* textoErrorTam -> texto que se le dispondrá al
+//                                          usuario si se pasa del tamaño
+//                                          previamente mencionado.
+//             const char* textoErrorLetras -> texto que se le dispondrá al
+//                                             usuario si ingresa caracteres
+//                                             que no sean letras o espacios.
 // DEVUELVE : void --> no devuelve nada, ya que es una funcion de tipo void.
 //-----------------------------------------------------------------------------
 void validarNombre(char* cad, unsigned tam, const char* textoErrorTam, const char* textoErrorLetras)
@@ -154,10 +168,10 @@ void validarNombre(char* cad, unsigned tam, const char* textoErrorTam, const cha
 
 //=============================================================================
 // FUNCION : void llenarEspacio(int cant)
-// ACCION : Ingresa una cantidad de espacios las cuales luego las completa con una
-//          salida vacia.
+// ACCION : saca por pantalla una cantidad cant de espacios. Se utiliza para
+//          el alineamiento de datos dinamicos.
 // PARAMETROS: int cant -> cantidad de espacios.
-// DEVUELVE : void --> no devuelve ningun tipo de valor.
+// DEVUELVE : void --> no devuelve nada.
 //-----------------------------------------------------------------------------
 void llenarEspacio(int cant)
 {
@@ -167,9 +181,9 @@ void llenarEspacio(int cant)
 
 //=============================================================================
 // FUNCION : long long strToInt(char* cad)
-// ACCION : Transforma caracteres numericos en caracteres long
-// PARAMETROS: char* cad -> cadena que luego es transformada.
-// DEVUELVE : long long --> devuelve la cadena como enteros.
+// ACCION : Transforma una cadena de caracteres en un numero.
+// PARAMETROS: char* cad -> cadena a ser transformada.
+// DEVUELVE : long long --> cadena pasada a numeros.
 //-----------------------------------------------------------------------------
 long long strToInt(char* cad)
 {
@@ -189,10 +203,9 @@ long long strToInt(char* cad)
 
 //=============================================================================
 // FUNCION : bool esEntero(char* cadena)
-// ACCION : valida si el ingreso de la cadena dispone de numeros enteros.
-// PARAMETROS: char*, cadena, recorre y valida que la misma disponga
-//             de valores menores a 0 y 9
-// DEVUELVE : bool --> valida si la cadena ingresa tiene caracteres numeros.
+// ACCION : valida si la cadena ingresada dispone unicamente de numeros enteros.
+// PARAMETROS: char* cadena -> cadena sobre la que se hara la validacion
+// DEVUELVE : bool --> true si solo tiene numeros, false caso contrario.
 //-----------------------------------------------------------------------------
 bool esEntero(char* cadena)
 {
@@ -205,11 +218,11 @@ bool esEntero(char* cadena)
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : long long validarDNI()
+// ACCION : pide al usuario el ingreso de un DNI, y se asegura de que sea un
+//          ingreso valido.
+// PARAMETROS: -.
+// DEVUELVE : long long --> DNI validado.
 //-----------------------------------------------------------------------------
 long long validarDNI()
 {
@@ -227,11 +240,11 @@ long long validarDNI()
 }
 
 //=============================================================================
-// FUNCION : tipo nombre(lista de parametros)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-// que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : tipo --> explicacion si representa algo.
+// FUNCION : int validarHoras()
+// ACCION : pide al usuario el ingreso de horas (trabajadas) y no permite
+//          ingresos no validos.
+// PARAMETROS: -.
+// DEVUELVE : int --> un numero de horas validadas.
 //-----------------------------------------------------------------------------
 int validarHoras()
 {
@@ -250,9 +263,8 @@ int validarHoras()
 
 //=============================================================================
 // FUNCION : void toUpper(char* cadena)
-// ACCION : transforma la cadena en Mayuscula.
-// PARAMETROS: char* cadena -> recorre la cadena y hace una operacion matematica
-//             para transformarla en mayuscula.
+// ACCION : transforma todas las letras la cadena en Mayuscula.
+// PARAMETROS: char* cadena -> cadena a transformar.
 // DEVUELVE : void --> no devuelve ningun valor.
 //-----------------------------------------------------------------------------
 void toUpper(char* cadena)
@@ -265,26 +277,10 @@ void toUpper(char* cadena)
 }
 
 //=============================================================================
-// FUNCION : void toLower(char* cadena)
-// ACCION : transforma toda la cadena de caracteres en minuscula
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-//             que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : void.
-//-----------------------------------------------------------------------------
-void toLower(char* cadena)
-{
-    for(int x=0; cadena[x]!='\0'; x++)
-    {
-        if( cadena[x]>='a' && cadena[x]<='z' )
-            cadena[x] = cadena[x]+32;
-    }
-}
-
-//=============================================================================
 // FUNCION : void firstUpper(char *cad)
-// ACCION : Transformar el primero caracter de la cadena en mayuscula
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-//             que representa, y valores posibles si existieran limitaciones).
+// ACCION : Transformar el primer caracter de la cadena en mayuscula y el resto
+//          en minuscula
+// PARAMETROS: char *cad -> cadena que sufrira la transformacion.
 // DEVUELVE : no devuelve nada ya que es void.
 //-----------------------------------------------------------------------------
 void firstUpper(char *cad)
@@ -301,9 +297,8 @@ void firstUpper(char *cad)
 
 //=============================================================================
 // FUNCION : int intlen(unsigned n)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-//             que representa, y valores posibles si existieran limitaciones).
+// ACCION : cuenta las cifras del numero pasado por parametro y retorna la cantidad.
+// PARAMETROS: unsigned n
 // DEVUELVE : int --> cantidad de cifras del número pasado por parámetro.
 //-----------------------------------------------------------------------------
 int intlen(unsigned n)
@@ -318,11 +313,13 @@ int intlen(unsigned n)
 }
 
 //=============================================================================
-// FUNCION : int intlen(unsigned n)
-// ACCION : explicar brevemente que es lo que hace la funcion y como.
-// PARAMETROS: lista de parametros (uno por linea donde se indique: tipo, nombre,
-//             que representa, y valores posibles si existieran limitaciones).
-// DEVUELVE : int --> cantidad de cifras del número pasado por parámetro.
+// FUNCION : void cortarEn(int fin, const char* cpy, char* paste)
+// ACCION : toma una cadena y le copia los caracteres de otra hasta la posicion
+//          fin.
+// PARAMETROS: int fin -> posicion en la que se desea cortar la cadena.
+//             const char* cpy -> cadena de la que se tomaran los caracteres.
+//             char* paste -> cadena a modificar.
+// DEVUELVE : void --> no devuleve nada.
 //-----------------------------------------------------------------------------
 void cortarEn(int fin, const char* cpy, char* paste)
 {
