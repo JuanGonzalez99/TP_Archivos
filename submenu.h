@@ -136,18 +136,21 @@ void menuConfigPrecios()
 // DEVUELVE : Freelance, nuevo --> devuelve una estructura freelance para luego
 //            ser resguardada.
 //-----------------------------------------------------------------------------
-Freelance leerFreelance()
+Freelance leerFreelance(bool esNuevo=true)
 {
     Freelance nuevo;
     cout << "Nombre: ";
     sys::getline(nuevo.nombre, 30);
     cout << "Apellido: ";
     sys::getline(nuevo.apellido, 30);
-    cout << "Tipo de freelance (DISEÑADOR=0, DESARROLLADOR=1, ANALISTA=2): ";
-    cin >> nuevo.tipo;
-    cout << "DNI: ";
-    cin >> nuevo.DNI; cin.ignore();
-    nuevo.horas = 0;
+    cout << "Tipo de freelance (DISEÑADOR=1, DESARROLLADOR=2, ANALISTA=3): ";
+    nuevo.tipo = (int)validarOpcion("123", "Ingrese una de las opciones mostradas: ")-49;
+    if(esNuevo)
+    {
+        cout << "DNI: ";
+        nuevo.DNI = validarDNI();
+        nuevo.horas = 0;
+    }
     return nuevo;
 }
 
@@ -158,14 +161,19 @@ Freelance leerFreelance()
 //             se utiliza para mostrar la informacion de la misma.
 // DEVUELVE : void --> nada, debido a que es una funcion void.
 //-----------------------------------------------------------------------------
-void mostrarFreelance(Freelance f)
+void mostrarFreelance(Freelance f, bool modoListado=false)
 {
-    cout << "Nombre             : " << f.nombre << endl;
-    cout << "Apellido           : " << f.apellido << endl;
-    cout << "DNI                : " << f.DNI << endl;
-    cout << "Tipo de freelance  : "; if(f.tipo == DISENIADOR) cout << "Diseñador"; else if(f.tipo == DESARROLLADOR) cout << "Desarrollador"; else cout << "Analista"; cout << endl;
-    cout << "Horas              : " << f.horas << endl;
-    cout << endl;
+    if(!modoListado)
+    {
+        cout << "Nombre             : " << f.nombre << endl;
+        cout << "Apellido           : " << f.apellido << endl;
+        cout << "DNI                : " << f.DNI << endl;
+        cout << "Tipo de freelance  : "; if(f.tipo == DISENIADOR) cout << "Diseñador"; else if(f.tipo == DESARROLLADOR) cout << "Desarrollador"; else cout << "Analista"; cout << endl;
+        cout << "Horas              : " << f.horas << endl;
+        cout << endl;
+        return;
+    }
+
 }
 
 //=============================================================================
@@ -215,7 +223,7 @@ void menuAgregar()
     if(existeFreelance(nuevo.DNI))
     {
         cout << "DNI ya existente" << endl;
-        pedirEnter("Enter ");
+        pedirEnter("\nPresione enter para volver ");
         return;
     }
     guardarFreelance(nuevo);
@@ -241,32 +249,36 @@ void menuBusqueda()
 {
     sys::cls();
     cout << "#==============================================================================#" << endl;
-    cout << "|                           BUSQUEDA DE FREELANCES                             |" << endl;
+    cout << "|                           BUSQUEDA DE FREELANCES (ni a alfa llega)           |" << endl;
     cout << "#==============================================================================#" << endl;
+    cout << endl;
+//    cout << "¿A quien desea buscar? ('h' para ayuda): ";
 
+//    char busqueda[30];
+//    validarNombre(busqueda, 30, "", "");
+//
+//    verificarFreelances();
+//    Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
+//    if(freelances == NULL)
+//    {
+//        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+//        pedirEnter("\nPresione enter para volver ");
+//        return;
+//    }
 
+    cout << "Ingrese el DNI a buscar: ";
+    int dni = validarDNI();
+    cout << endl << endl;
     verificarFreelances();
-    Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
-    if(freelances == NULL)
+    if(!existeFreelance(dni))
     {
-        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+        cout << "Freelance inexistente" << endl;
         pedirEnter("\nPresione enter para volver ");
         return;
     }
-//    cout << endl;
-//    cout << "Ingrese el DNI a buscar: ";
-//    cin >> dni; cin.ignore();
-//    cout << endl;
-//
-//    verificarFreelances();
-//
-//    if(!existeFreelance(dni))
-//    {
-//        cout << "Freelance inexistente" << endl;
-//        pedirEnter("Enter ");
-//        return;
-//    }
-//    mostrarFreelance(buscarFreelanceDNI(dni));
+    mostrarFreelance(buscarFreelanceDNI(dni));
+
+//    free(freelances);
     pedirEnter("\n\n(Presione enter para volver) ");
 }
 
@@ -279,25 +291,30 @@ void menuBusqueda()
 //-----------------------------------------------------------------------------
 void menuModificarFreelance()
 {
-    int dni;
     sys::cls();
     cout << "#============================================================================#" << endl;
     cout << "|                       MODIFICAR DATOS DE FREELANCE                         |" << endl;
     cout << "#============================================================================#" << endl;
     cout << endl;
     cout << "Ingrese el DNI a buscar: ";
-    cin >> dni; cin.ignore();
+
+    long long DNI = validarDNI();
+
     cout << endl;
 
     verificarFreelances();
-
-    if(!existeFreelance(dni))
+    if(!existeFreelance(DNI))
     {
         cout << "Freelance inexistente" << endl;
-        pedirEnter("Enter ");
+        pedirEnter("\nPresione enter para volver ");
         return;
     }
-    modificarFreelance(dni);
+    mostrarFreelance(buscarFreelanceDNI(DNI));
+    cout << endl;
+    Freelance aux = leerFreelance(false);
+    aux.DNI = DNI; aux.horas = buscarFreelanceDNI(DNI).horas;
+    modificarFreelance(aux);
+
     pedirEnter("\n\n(Presione enter para volver) ");
 
 }
@@ -338,7 +355,8 @@ void menuCargaDNI()
     verificarFreelances();
 
     buscado.horas = horas;
-//    modificarFreelance(buscado);
+    modificarFreelance(buscado);
+
     cout << endl;
     if(buscarFreelanceDNI(buscado.DNI).horas == horas)
     {
@@ -369,10 +387,10 @@ void menuCargaGral()
         pedirEnter("\nPresione enter para volver ");
         return;
     }
+    llenarFreelances(freelances);
 
     for(int x=0; x<cantRegistros(); x++)
     {
-        int horas;
         sys::cls();
         cout << "#============================================================================#" << endl;
         cout << "|                               CARGA GENERAL                                |" << endl;
@@ -380,9 +398,8 @@ void menuCargaGral()
         cout << endl;
         mostrarFreelance(freelances[x]);
         cout << "Ingrese las horas trabajadas: ";
-        cin >> horas; cin.ignore();
-//        modificarFreelance(freelances[x]);
-
+        freelances[x].horas = validarHoras();
+        modificarFreelance(freelances[x]);
     }
     sys::cls();
     free(freelances);
@@ -464,11 +481,15 @@ void reporteGeneral()
 
     sys::cls();
     cout << "#============================================================================#" << endl;
-    cout << "|                              REPORTE GENERAL                               |" << endl;
+    cout << "|                              REPORTE GENERAL (beta)                        |" << endl;
     cout << "#============================================================================#" << endl;
-
+    for(int x=0; x<cantRegistros(); x++)
+    {
+        mostrarFreelance(registros[x]);
+    }
 
     free(registros);
+    pedirEnter("\nPresione enter para volver ");
 }
 
 #endif // SUBMENU_H_INCLUDED
