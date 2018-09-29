@@ -385,7 +385,7 @@ void menuAyuda()
     cout << "#                                                                            #" << endl;
     cout << "# 2.Buscar freelance: Busca el freelance ingresando el Nombre o Apellido     #" << endl;
     cout << "#                     Opcion 1: ayuda, Opcion 2: salir                       #" << endl;
-    cout << "#                      ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )      #" << endl;
+    cout << "#                    ( ATENCION: INGRESAR UN FREELANCE PREVIAMENTE CARGADO ) #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 3.Modificar freelance: Ingrese el DNI y automaticamente usted podra        #" << endl;
     cout << "#                        cambiar los datos del mismo  ( Nombre, Apellido,    #" << endl;
