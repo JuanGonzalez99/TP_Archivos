@@ -87,7 +87,7 @@ void menuConfigPrecios()
         cout << "Desarrolladores (2): $" << p.desarrolladores << endl;
         cout << "Analistas (3): $" << p.analistas << endl;
         cout << endl;
-        cout << "Ingrese un tipo de freelance o 'S' para salir: ";
+        cout << "Ingrese un tipo de freelance (1, 2 o 3) o 'S' para salir: ";
 
         char op = validarOpcion("123Ss");
 
@@ -284,7 +284,7 @@ void menuBusqueda()
     {
         sys::cls();
         cout << "#==============================================================================#" << endl;
-        cout << "|                           BUSQUEDA DE FREELANCES (falta paginado)            |" << endl;
+        cout << "|                           BUSQUEDA DE FREELANCES                             |" << endl;
         cout << "#==============================================================================#" << endl;
         cout << endl;
         cout << "¿A quien desea buscar? (1 para ayuda, 2 para salir): ";
@@ -355,6 +355,7 @@ void menuBusqueda()
                 i++;
             }
         }
+        free(freelances);
 
         if(cantBusc<=5)
         {
@@ -367,16 +368,66 @@ void menuBusqueda()
                 mostrarFreelance(buscados[x], 1);
             }
             cout << "--------------------------------------------------------------------------------" << endl;
+            pedirEnter("\n\n(Presione enter para volver) ");
         }
         else
         {
-            cout << "Demasiados resultados (mentira, falta el paginado)" << endl;
-        }
+            int pag = 1, maxPag;
+            if(cantBusc%5==0)
+                maxPag = cantBusc/5;
+            else
+                maxPag = (cantBusc/5)+1;
+
+            bool volver = false;
+            while(!volver)
+            {
+                sys::cls();
+                cout << "#==============================================================================#" << endl;
+                cout << "|   DNI    |    Nombre    |   Apellido    |    Tipo     |  Horas  |   Sueldo   |" << endl;
+                cout << "#==============================================================================#" << endl;
+                for(int x=0; x<5 && ((pag-1)*5+x)<cantBusc ; x++)
+                {
+                    mostrarFreelance(buscados[(pag-1)*5+x], 1);
+                }
+                cout << "--------------------------------------------------------------------------------" << endl;
+                cout << endl;
+                cout << "Pag " << pag << " de " << maxPag << " (" << cantBusc << " resultados)" << endl;
+                cout << endl;
+                cout << "A para ir a la pagina anterior, D para ir a la pagina siguiete. S para volver" << endl;
+                cout << endl;
+                cout << "Ingrese una opcion: ";
+                char op = validarOpcion("adsADS", "Ingrese una de las opciones mostradas: ");
+                switch(op)
+                {
+                case 'A':
+                case 'a':
+                    {
+                        if(pag == 1)
+                            continue;
+                        pag--;
+
+                    }break;
+                case 'D':
+                case 'd':
+                    {
+                        if(pag == maxPag)
+                            continue;
+                        pag++;
+                    }break;
+                case 'S':
+                case 's':
+                    {
+                        volver = true;
+                    }break;
+                }//Fin switch
+
+            }//Fin while
+
+        }//Fin else
 
 
-        free(freelances);
-        pedirEnter("\n\n(Presione enter para volver) ");
-    }
+        free(buscados);
+    }//Fin while
 }
 
 //=============================================================================
