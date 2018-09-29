@@ -191,7 +191,9 @@ void mostrarFreelance(Freelance f, int modo=0)
 
             cout << "|" << f.DNI; llenarEspacio(10-intlen(f.DNI)); cout << "|" << n; llenarEspacio(14-strlen(n));
             cout << "|" << a; llenarEspacio(15-strlen(a)); cout << "|";
-            if(f.tipo == 0) cout << "Diseñador"; if(f.tipo == 1) cout << "Desarrollador"; if(f.tipo == 2) cout << "Analista";
+            if(f.tipo == 0) cout << "Diseñador    ";
+            if(f.tipo == 1) cout << "Desarrollador";
+            if(f.tipo == 2) cout << "Analista     ";
             cout << "|" << f.horas; llenarEspacio(9-intlen(f.horas)); cout << "|" << sueldo; llenarEspacio(12-intlen(sueldo));
             cout << "|" << endl;
         }
@@ -285,21 +287,21 @@ void menuBusqueda()
         cout << "|                           BUSQUEDA DE FREELANCES (falta paginado)            |" << endl;
         cout << "#==============================================================================#" << endl;
         cout << endl;
-        cout << "¿A quien desea buscar? (Ingrese h para ayuda, s para salir): ";
+        cout << "¿A quien desea buscar? (1 para ayuda, 2 para salir): ";
         char busqueda[31];
         sys::getline(busqueda, 30);
-        while(0)
+        while( strlen(busqueda)<1 )
         {
-            cout << "Aca tendria que ir una validacion";
+            sys::getline(busqueda, 30);
         }
 
-        if( (busqueda[0]=='h' || busqueda[0]=='H') && strlen(busqueda)==1 )
+        if( busqueda[0]=='1' && strlen(busqueda)==1 )
         {
             cout << "Busca en Google";
             pedirEnter("\nPresione enter para continuar ");
             continue;
         }
-        if( (busqueda[0]=='s' || busqueda[0]=='S') && strlen(busqueda)==1 )
+        if( busqueda[0]=='2' && strlen(busqueda)==1 )
         {
             return;
         }
@@ -314,27 +316,63 @@ void menuBusqueda()
         }
         llenarFreelances(freelances);
 
-        sys::cls();
-        cout << "#==============================================================================#" << endl;
-        cout << "|   DNI    |    Nombre    |   Apellido    |    Tipo     |  Horas  |   Sueldo   |" << endl;
-        cout << "#==============================================================================#" << endl;
-        Freelance aux;
         toUpper(busqueda);
+
+        int cantBusc = 0;
         for(int x=0; x<cantRegistros(); x++)
         {
-            aux = freelances[x];
             toUpper(freelances[x].nombre);
             toUpper(freelances[x].apellido);
-            aux = freelances[x];
             if( strSub(freelances[x].apellido, busqueda) || strSub(freelances[x].nombre, busqueda) )
             {
-                firstUpper(freelances[x].nombre);
+                cantBusc++;
+            }
+        }
+        if(cantBusc == 0)
+        {
+            cout << endl;
+            cout << "No se encontraron coincidencias" << endl;
+            pedirEnter("\n\nPresione enter para continuar ");
+            continue;
+        }
+
+        Freelance *buscados = (Freelance*)malloc(cantBusc*sizeof(Freelance));
+        if(buscados == NULL)
+        {
+            cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+            pedirEnter("\nPresione enter para volver ");
+            return;
+        }
+
+        int i=0;
+        for(int x=0; x<cantRegistros(); x++)
+        {
+            if( strSub(freelances[x].apellido, busqueda) || strSub(freelances[x].nombre, busqueda) )
+            {
                 firstUpper(freelances[x].apellido);
-                mostrarFreelance(freelances[x], 1);
+                firstUpper(freelances[x].nombre);
+                buscados[i] = freelances[x];
+                i++;
             }
         }
 
-        cout << "--------------------------------------------------------------------------------" << endl;
+        if(cantBusc<=5)
+        {
+            sys::cls();
+            cout << "#==============================================================================#" << endl;
+            cout << "|   DNI    |    Nombre    |   Apellido    |    Tipo     |  Horas  |   Sueldo   |" << endl;
+            cout << "#==============================================================================#" << endl;
+            for(int x=0; x<cantBusc; x++)
+            {
+                mostrarFreelance(buscados[x], 1);
+            }
+            cout << "--------------------------------------------------------------------------------" << endl;
+        }
+        else
+        {
+            cout << "Demasiados resultados (mentira, falta el paginado)" << endl;
+        }
+
 
         free(freelances);
         pedirEnter("\n\n(Presione enter para volver) ");
