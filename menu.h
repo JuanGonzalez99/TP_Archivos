@@ -362,6 +362,8 @@ void menuAyuda()
     cout << "#             trabajadas por freelance (1) y ademas ver un reporte general   #" << endl;
     cout << "#             de todos los freelance cargados (2)                            #" << endl;
     cout << "#                                                                            #" << endl;
+    cout << "# 4.Ayuda: Ayuda general de la aplicacion                                    #" << endl;
+    cout << "#                                                                            #" << endl;
     cout << "# s.Salir   :      Salir y Cerrar el software                                #" << endl;
     cout << "#============================================================================#" << endl;
     cout << "#                              PRECIO POR HORA                               #" << endl;
@@ -369,9 +371,11 @@ void menuAyuda()
     cout << "# 1.Mostrar precio por hora: Muestra el precio de cada tipo de Freelance.    #" << endl;
     cout << "#                                                                            #" << endl;
     cout << "# 2.Configurar precio por hora: Ingresa el nuevo precio por hora de          #" << endl;
-    cout << "#                               cada tipo de freelance                       #"; pedirEnter();
+    cout << "#                               cada tipo de freelance                       #" << endl;
+    cout << "#                               ( DISENADOR=1, DESARROLLADOR=2, ANALISTA=3 ) #" << endl;
     cout << "#                                                                            #" << endl;
-    cout << "# 3.Volver: volver al menu principal                                         #" << endl;
+    cout << "#                                                                            #" << endl;
+    cout << "# 3.Volver: volver al menu principal                        (presione enter) #"; pedirEnter();
     cout << "#============================================================================#" << endl;
     cout << "#                                 FREELANCES                                 #" << endl;
     cout << "#----------------------------------------------------------------------------#" << endl;
@@ -396,7 +400,7 @@ void menuAyuda()
     cout << "# 5.Carga de horas general: Ingresa las horas trabajadas para cada uno       #" << endl;
     cout << "#                           de los Freelance                                 #" << endl;
     cout << "#                                                                            #" << endl;
-    cout << "# 6.Volver: Vuelve al menu principal.                                        #"; pedirEnter();
+    cout << "# 6.Volver: Vuelve al menu principal.                       (presione enter) #"; pedirEnter();
     cout << "#============================================================================#" << endl;
     cout << "#                                  REPORTES                                  #" << endl;
     cout << "#----------------------------------------------------------------------------#" << endl;
