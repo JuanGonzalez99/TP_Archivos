@@ -39,6 +39,7 @@ bool existeArchivo(const char *URL)
     p = fopen(URL,"rb");
     if( p == NULL )
     {
+
         return false;
     }
 
@@ -262,7 +263,7 @@ void modificarFreelance(Freelance reg)
     // Valido el registro de DNI que me pasastes con el registro de DNI que leo del disco.
         if(reg.DNI == aux.DNI){
             fseek(p, ftell(p)-sizeof aux, 0);
-            fwrite(&aux, sizeof(Freelance), 1, p);
+            fwrite(&reg, sizeof(Freelance), 1, p);
             fclose(p);
             return;
             }
