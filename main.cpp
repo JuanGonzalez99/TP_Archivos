@@ -32,7 +32,13 @@
 // LICENCIA            : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-//              Breve explicacion sobre el contenido del archivo.
+//              Este archivo contiene las estructuras globales tanto
+//              de freelances como de precios, las constantes de
+//              rutas de archivos y de tipos de freelance, asi
+//              como tambien las llamadas a la bienvenida del
+//              programa, al menu principal desde el cual se
+//              desarrollaran todas las acciones que el usuario
+//              desee, y por ultimo la despedida.
 //
 ////////////////////////////////////////////////////////////////////////////////
 

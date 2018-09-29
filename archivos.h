@@ -11,7 +11,7 @@
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // DESCRIPCION:
-// aquí va una descripción general de la libreria
+//  Esta libreria contiene todas las funciones que trabajan con archivos.
 //
 /////////////////////////////////////////////////////////////////////////////////
 #ifndef ARCHIVOS_H_INCLUDED
