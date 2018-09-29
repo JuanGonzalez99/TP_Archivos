@@ -111,13 +111,15 @@ void menuPrincipal()
         cout << "|                                                                            |" << endl;
         cout << "|                      3.            Reportes                                |" << endl;
         cout << "|                                                                            |" << endl;
+        cout << "|                      4.        Un poco de Ayuda                            |" << endl;
+        cout << "|                                                                            |" << endl;
         cout << "|                      s.             Salir                                  |" << endl;
         cout << "|                                                                            |" << endl;
         cout << "+----------------------------------------------------------------------------+" << endl;
         cout << endl;
         cout << "Ingrese una opcion: ";
 
-        char op = validarOpcion("123Ss");
+        char op = validarOpcion("1234Ss");
 
         sys::cls();
         switch(op)
@@ -133,6 +135,10 @@ void menuPrincipal()
             case '3':
             {
                 menuReportes();
+            }break;
+            case '4':
+            {
+                ayuda();
             }break;
             case 'S':
             case 's':
