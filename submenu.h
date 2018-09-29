@@ -2,7 +2,7 @@
 // ARCHIVO              : menu.h
 // AUTOR                : Juan Gonzalez.
 // FECHA DE CREACION    : 22/09/2018.
-// ULTIMA ACTUALIZACION : 28/09/2018.
+// ULTIMA ACTUALIZACION : 29/09/2018.
 // LICENCIA             : GPL (General Public License) - Version 3.
 //=============================================================================
 // SISTEMA OPERATIVO    : Windows 10.
@@ -278,39 +278,67 @@ void menuAgregar()
 //-----------------------------------------------------------------------------
 void menuBusqueda()
 {
-    sys::cls();
-    cout << "#==============================================================================#" << endl;
-    cout << "|                           BUSQUEDA DE FREELANCES (ni a alfa llega)           |" << endl;
-    cout << "#==============================================================================#" << endl;
-    cout << endl;
-//    cout << "¿A quien desea buscar? ('h' para ayuda): ";
-
-//    char busqueda[30];
-//    validarNombre(busqueda, 30, "", "");
-//
-//    verificarFreelances();
-//    Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
-//    if(freelances == NULL)
-//    {
-//        cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
-//        pedirEnter("\nPresione enter para volver ");
-//        return;
-//    }
-
-    cout << "Ingrese el DNI a buscar: ";
-    int dni = validarDNI();
-    cout << endl << endl;
-    verificarFreelances();
-    if(!existeFreelance(dni))
+    while(1)
     {
-        cout << "Freelance inexistente" << endl;
-        pedirEnter("\nPresione enter para volver ");
-        return;
-    }
-    mostrarFreelance(buscarFreelanceDNI(dni));
+        sys::cls();
+        cout << "#==============================================================================#" << endl;
+        cout << "|                           BUSQUEDA DE FREELANCES (falta paginado)            |" << endl;
+        cout << "#==============================================================================#" << endl;
+        cout << endl;
+        cout << "¿A quien desea buscar? (Ingrese h para ayuda, s para salir): ";
+        char busqueda[31];
+        sys::getline(busqueda, 30);
+        while(0)
+        {
+            cout << "Aca tendria que ir una validacion";
+        }
 
-//    free(freelances);
-    pedirEnter("\n\n(Presione enter para volver) ");
+        if( (busqueda[0]=='h' || busqueda[0]=='H') && strlen(busqueda)==1 )
+        {
+            cout << "Busca en Google";
+            pedirEnter("\nPresione enter para continuar ");
+            continue;
+        }
+        if( (busqueda[0]=='s' || busqueda[0]=='S') && strlen(busqueda)==1 )
+        {
+            return;
+        }
+
+        verificarFreelances();
+        Freelance *freelances = (Freelance*)malloc(cantRegistros()*sizeof(Freelance));
+        if(freelances == NULL)
+        {
+            cout << "Usted no dispone de la memoria suficiente para realizar esta operacion" << endl;
+            pedirEnter("\nPresione enter para volver ");
+            return;
+        }
+        llenarFreelances(freelances);
+
+        sys::cls();
+        cout << "#==============================================================================#" << endl;
+        cout << "|   DNI    |    Nombre    |   Apellido    |    Tipo     |  Horas  |   Sueldo   |" << endl;
+        cout << "#==============================================================================#" << endl;
+        Freelance aux;
+        toUpper(busqueda);
+        for(int x=0; x<cantRegistros(); x++)
+        {
+            aux = freelances[x];
+            toUpper(freelances[x].nombre);
+            toUpper(freelances[x].apellido);
+            aux = freelances[x];
+            if( strSub(freelances[x].apellido, busqueda) || strSub(freelances[x].nombre, busqueda) )
+            {
+                firstUpper(freelances[x].nombre);
+                firstUpper(freelances[x].apellido);
+                mostrarFreelance(freelances[x], 1);
+            }
+        }
+
+        cout << "--------------------------------------------------------------------------------" << endl;
+
+        free(freelances);
+        pedirEnter("\n\n(Presione enter para volver) ");
+    }
 }
 
 //=============================================================================
@@ -567,82 +595,6 @@ void reporteGeneral()
 
     free(registros);
     pedirEnter("\nPresione enter para volver ");
-}
-
-void ayuda()
-{
-
-    sys::cls();
-    cout << "#============================================================================#" << endl;
-    cout << "|           BIENVENIDO AL  MENU DE AYUDA / Software Magic                    |" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#===========    AYUDA:   MENU PRINCIPAL                         =============#" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#=El menu principal se compone de 4 opciones                                =#" << endl;
-    cout << "#=1.Precio por hora: Esta opcion despliega las opciones que le permiten a   =#" << endl;
-    cout << "#=                   usted ver (1) y configurar (2) los precios             =#" << endl;
-    cout << "#=                   por hora de cada uno de los tipos de Freelances        =#" << endl;
-    cout << "#=                   ( DISENADOR=1, DESARROLLADOR=2, ANALISTA=3 )           =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=2.Freelancers: Esta opcion despliega las opciones para                    =#" << endl;
-    cout << "#=               'Agregar (1)','Buscar(2)','Modificar(3)' los diferentes    =#" << endl;
-    cout << "#=               tipos de Freelance como asi tambien le permite  a usted    =#" << endl;
-    cout << "#=               cargar la cantidad de horas por DNI (4) para cada uno de   =#" << endl;
-    cout << "#=               los freelance. Tambien dispone de una opcion (5) para      =#" << endl;
-    cout << "#=               cargar las horas trabajadas.                               =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=3.Reportes: Esta opcion le permite a usted ver la estadistica de horas    =#" << endl;
-    cout << "#=            trabajadas por freelance (1) y ademas ver un reporte general  =#" << endl;
-    cout << "#=            de todos los freelance cargados (2)                           =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=s.Salir   :      Salir y Cerrar el software                               =#" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#========= AYUDA:   PRECIO POR HORA ( 1° submenu/Precio por hora )===========#" << endl;
-    cout << "#=1.Mostrar precio por hora: Muestra el precio de cada tipo de Freelance.   =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=2.Configurar precio por hora: Ingresa el nuevo precio por hora de         =#" << endl;
-    cout << "#=                              cada tipo de freelance                      =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=3.Volver: volver al menu principal                                        =#" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#==========  AYUDA:    Freelancers  ( 2° submenu/Freelancers )  =============#" << endl;
-    cout << "#=1.Agregar freelance: Se agrega el Nombre,Apellido,Tipo de Freelance y DNI =#" << endl;
-    cout << "#=                     del nuevo freelance.                                 =#" << endl;
-    cout << "#=                     ( ATENCION:POR FAVOR NO INGRESE UN DNI YA EXISTENTE )=#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=2.Buscar freelance: Busca el freelance ingresando el numero               =#" << endl;
-    cout << "#=                    de DNI del mismo                                      =#" << endl;
-    cout << "#=                     ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )     =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=3.Modificar freelance: Ingrese el DNI y automaticamente usted podra       =#" << endl;
-    cout << "#=                       cambiar los datos del mismo  ( Nombre, Apellido,   =#" << endl;
-    cout << "#=                       y Tipo de Freelance )     .                        =#" << endl;
-    cout << "#=                     ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )     =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=4.Carga de horas por DNI: Esta opcion le permite a usted ingresar las     =#" << endl;
-    cout << "#=                          horas trabajadas del Freelance.                 =#" << endl;
-    cout << "#=                     ( ATENCION:INGRESAR UN DNI PREVIAMENTE CARGADO )     =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=5.Carga de horas general: Ingresa las horas trabajadas para cada uno      =#" << endl;
-    cout << "#=                          de los Freelance                                =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=6.Volver: Vuelve al menu principal.                                       =#" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#===========   AYUDA:       Reportes ( 3° submenu )             =============#" << endl;
-    cout << "#=1.Horas trabajadas por tipo de freelance: Muestra el total de horas       =#" << endl;
-    cout << "                                            trabajadas por cada uno de      =#" << endl;
-    cout << "                                            los freelance                   =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=2.Reporte general: reporte general de todos los freelance                 =#" << endl;
-    cout << "#=                                                                          =#" << endl;
-    cout << "#=3.Volver: Volver al menu principal.                                       =#" << endl;
-    cout << "#============================================================================#" << endl;
-    cout << "#============================================================================#" << endl;
-    pedirEnter("\n\nPresione enter para volver ");
-
-
 }
 
 #endif // SUBMENU_H_INCLUDED
